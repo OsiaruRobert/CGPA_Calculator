@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <title>GPA Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -303,16 +304,16 @@
     <h2>Please update the app</h2>
     <button id="Update_link">Update</button>
   </div>
-  
+
   <script src="Html/UI.js" type="text/javascript" charset="utf-8"></script>
   <script src="Html/tips.js" type="text/javascript" charset="utf-8"></script>
 
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
     app.EnableBackKey(false);
-    
+
     let OnBack = () => {
-     app.Exit();
+      app.Exit();
     }
 
     //class that creates a Course object that will have properties like Course title, Credit Unit , Grade and point.
@@ -998,7 +999,7 @@ ${GradeOption}
         "grid");
       SeeOrHide("CGPA_Ads",
         "block");
-        scrollUp();
+      scrollUp();
       OnBack = () => {
         from_Calculator_to_Hone();
       }
@@ -1014,10 +1015,9 @@ ${GradeOption}
         "none");
       SeeOrHide("startPage",
         "block");
-        scrollUp();
+      scrollUp();
       //Can Exit app..
-      OnBack = () => {
-      }
+      OnBack = () => {}
 
     }
     //The back to home which is startPage
@@ -1032,8 +1032,8 @@ ${GradeOption}
       from_Calculator_to_CGPA_interface();
     });
 
-//Save CGPA function moved to script.js
- 
+    //Save CGPA function moved to script.js
+
 
     //To View_CGPA_Result
     Id('View_CGPA_Result').addEventListener('click', () => {
@@ -1137,7 +1137,7 @@ ${GradeOption}
 
 
 
-//Save GPA function moved to script.js
+    //Save GPA function moved to script.js
 
     //To View_GPA_Result
     Id('View_GPA_Result').addEventListener('click', () => {
@@ -1165,12 +1165,12 @@ ${GradeOption}
     });
 
 
-    
+
 
 
     //shareButton
     Id("shareButton").addEventListener('click', () => {
-     app.SendText("I absolutely love using this app for calculating my CGPA and GPA! It’s incredibly fast, intuitive, and makes the entire process effortless. If you want an easy way to keep track of your academic performance, I highly recommend you give it a try: [https://link]", "Share app", "Choose an app");
+      app.SendText("I absolutely love using this app for calculating my CGPA and GPA! It’s incredibly fast, intuitive, and makes the entire process effortless. If you want an easy way to keep track of your academic performance, I highly recommend you give it a try: [https://link]", "Share app", "Choose an app");
     });
 
     //Ads in buult
@@ -1233,8 +1233,8 @@ ${GradeOption}
           //Validate
           if (1 < latestVersion) {
             Id("Update_link").onclick = function() {
-          app.OpenUrl(link);
-        }
+              app.OpenUrl(link);
+            }
           }
         }
       }
@@ -1292,7 +1292,7 @@ ${GradeOption}
         Owners = processing_Owner_S.map(processing_Owner_S => processing_Owner_S.replace(/Ads_Owner_S | Ads_Owner_E/g, '').trim());
       }
       console.log(Owners);
-      
+
       //Create our tips array
       let adsTips = []
       for (let i = 0; i < Owners.length; i++) {
