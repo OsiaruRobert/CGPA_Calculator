@@ -536,7 +536,7 @@ input:checked+.slider .theme-icon {
   margin: 2vw;
 }
 
-.Update button {
+.Update a {
   margin: 5vh 5vh 5vh 60vw;
   height: 9vh;
   width: 10vh;
@@ -545,6 +545,7 @@ input:checked+.slider .theme-icon {
   font-size: 4.3vw;
   color: #fff;
   background: var(--pri);
+  display: block ;
 }
 
 #x {
