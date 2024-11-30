@@ -529,8 +529,7 @@ input:checked+.slider .theme-icon {
   margin: 0px;
   padding: 6vw;
   border-radius: 4vh;
-  display: none;
-
+  display: block;
 }
 
 .Update h2 {
