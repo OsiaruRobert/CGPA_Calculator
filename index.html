@@ -1176,38 +1176,23 @@ ${GradeOption}
 
     //Ads in buult
     let In_Built_Ads = `
-        Ads_Img_S 
-            Img/adsTest.jpg 
-        Ads_Img_E
-        Ads_Url_S
-             https://1u.wordpress.com
-        Ads_Url_E
-        Ads_Alt_S 
-            in built ads 1
-        Ads_Alt_E
-        Ads_Owner_S 
-            Owner1 
-        Ads_Owner_E
+        Ads_Img_S Img/adsTest.jpg Ads_Img_E
+        Ads_Url_S https://1u.wordpress.com Ads_Url_E 
+        Ads_Alt_S in built ads 1 Ads_Alt_E
+        Ads_Owner_S Owner1 Ads_Owner_E
 
-        Ads_Img_S 
-            Img/adsTest.jpg
-        Ads_Img_E
-        Ads_Url_S  
-            https://2u.wordpress.com
-        Ads_Url_E
-        Ads_Alt_S 
-            in built ads 2
-        Ads_Alt_E
-        Ads_Owner_S 
-        Ads_Owner_E
+        Ads_Img_S Img/adsTest.jpg Ads_Img_E
+        Ads_Url_S https://2u.wordpress.com Ads_Url_E
+        Ads_Alt_S in built ads2 Ads_Alt_E
+        Ads_Owner_S onwer2 Ads_Owner_E
         `;
 
     let raw_Ads = "Nothing ";
 
-/*
+
     if (navigator.onLine) {
       try {
-        requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+        requestAds("https://github.com/OsiaruRobert/Fetch/blob/main/Online.json");
       } catch (e) {
 
         console.log(e);
@@ -1215,13 +1200,13 @@ ${GradeOption}
     } else {
       window.addEventListener('online', () => {
         try {
-          requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+          requestAds("https://github.com/OsiaruRobert/Fetch/blob/main/Online.json");
         } catch (e) {
           console.log(e);
         }
       });
     }
-*/
+
     //requestAds
     function requestAds(address) {
       app.HttpRequest("GET", address, null, null, handleReply);
@@ -1274,6 +1259,8 @@ ${GradeOption}
         // Capitalize to use the matches properly and trim spaces
         Imgs = processing_Img_S.map(processing_Img_S => processing_Img_S.replace(/Ads_Img_S | Ads_Img_E/g, '').trim());
       }
+      console.log(Imgs);
+
 
       /*Create and array of Owner' Url*/
       //Use regex to find everything between "Ads_Url_S" and "Ads_Url_E"
@@ -1284,6 +1271,7 @@ ${GradeOption}
         // Capitalize to use the matches properly and trim spaces
         Urls = processing_Url_S.map(processing_Url_S => processing_Url_S.replace(/Ads_Url_S | Ads_Url_E/g, '').trim());
       }
+      console.log(Urls);
 
       /*Create and array of Ads alt*/
       //Use regex to find everything between "Ads_Alt_S" and "Ads_Alt_E"
@@ -1294,6 +1282,7 @@ ${GradeOption}
         // Capitalize to use the matches properly and trim spaces
         Alts = processing_Arl_S.map(processing_Arl_S => processing_Arl_S.replace(/Ads_Alt_S | Ads_Alt_E/g, '').trim());
       }
+      console.log(Alts);
       /*Create and array of Ads Owner name*/
       //Use regex to find everything between "Ads_Owner_S" and "Ads_Owner_E"
       let processing_Owner_S = raw_text.match(/Ads_Owner_S (.*?) Ads_Owner_E/g);
@@ -1303,6 +1292,8 @@ ${GradeOption}
         // Capitalize to use the matches properly and trim spaces
         Owners = processing_Owner_S.map(processing_Owner_S => processing_Owner_S.replace(/Ads_Owner_S | Ads_Owner_E/g, '').trim());
       }
+      console.log(Owners);
+      
       //Create our tips array
       let adsTips = []
       for (let i = 0; i < Owners.length; i++) {
