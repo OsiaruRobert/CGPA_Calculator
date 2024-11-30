@@ -1,0 +1,616 @@
+* {
+  transition: background-color 0.5s ease, color 0.09s ease, display 1s ease;
+}
+
+.app-container {
+  display: grid;
+  width: 100%;
+}
+
+.app-header {
+  background-color: var(--pri);
+  color: var(--MainTextColor);
+  padding: 7vw;
+  text-align: center;
+  position: relative;
+  display: flex;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  max-height: 15vh;
+}
+
+.app-header h1 {
+  text-align: left;
+  font-size: 4vh;
+  width: 70%;
+  padding-left: 2vw;
+}
+
+.toggle-icon {
+  width: 10vw;
+  height: 10vw;
+  margin: 0vw 2vw auto 6vw;
+}
+
+.app-main {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.app-main * {
+  padding: 5px;
+}
+
+.nav {
+  height: 40vh;
+  width: 40vw;
+  font-size: 5vw;
+  position: fixed;
+  top: 12vh;
+  right: -40vw;
+  z-index: 10;
+  background: var(--pri);
+  display: block;
+  border-radius: 1rem;
+  transition: right 0.3s ease;
+  z-index: 2;
+}
+
+.nav>span {
+  width: 40vw;
+  height: 10vh;
+  margin: 0px;
+  display: block;
+  padding: 3vh 3vw 3vh 2vw;
+  text-decoration: none;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+}
+
+.nav>span .navIcon {
+  height: 4vh;
+  width: 4vh;
+  margin: 1vh;
+}
+
+.nav>span span {
+  margin: 1vh 0px;
+}
+
+.nav>span:not(:last-child) {
+  border-bottom: solid 0.3vh;
+}
+
+.ToHome,
+.To_GI,
+.To_CI {
+  position: absolute;
+  top: 18vh;
+  right: 3vh;
+  height: 5vh;
+  width: 5vh;
+  display: block;
+}
+
+.AuxPage {
+  position: fixed;
+  top: 0;
+  z-index: 12;
+  overflow-y: scroll;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  background-color: #fff;
+}
+
+.dark .AuxPage,
+.dark #tipsPage {
+  background-color: var(--priDDark);
+}
+
+.head {
+  width: 100vw;
+  height: 10vh;
+  padding: 2vh;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  gap: 2px;
+  background-color: #004FBF;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.head>* {
+  display: grid;
+  margin: 0;
+  font-size: 6vh;
+}
+
+.close_Aux {
+  font-weight: 800;
+  color: #CA002C;
+  cursor: pointer;
+}
+
+#aboutContainer {
+  margin: 40px auto;
+  max-width: 80vw;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 10%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#aboutContainer h3 {
+  font-size: 7vw;
+  margin-bottom: 10px;
+}
+
+#aboutContainer em {
+  font-size: 4vw;
+  color: #666;
+}
+
+.dark #aboutContainer em,
+.dark #aboutContainer b,
+.dark #aboutContainer .toMe {
+  color: #BFBFBF;
+}
+
+#aboutContainer b {
+  font-size: 4vw;
+  margin-bottom: 5px;
+}
+
+.toMe {
+  font-size: 4vw;
+  color: #333;
+}
+
+.dark #aboutContainer {
+  background-color: var(--priDark);
+  color: #fff;
+}
+
+.info {
+  margin: 7vh auto;
+  max-width: 80vw;
+  padding: 5vw;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+details {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+details summary {
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 6vw;
+}
+
+details p {
+  font-size: 5vw;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+details ol {
+  padding-left: 20px;
+}
+
+details li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+details ol li:before {
+  content: "\2022";
+  color: #004FBF;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.dark .info {
+  background: #444;
+}
+
+.dark #manualPage {
+  background: #333;
+}
+
+.dark #manualPage .head {
+  background-color: #222;
+}
+
+.dark #manualPage .info {
+  background: #444;
+}
+
+.dark #manualPage summary {
+  background-color: #333;
+}
+
+.dark #manualPage details p,
+.dark #manualPage details li {
+  color: #ccc;
+}
+
+.dark #manualPage .head {}
+
+
+.Tipscontainer {
+  max-width: 80vw;
+  margin: 20vh auto;
+  padding: 5vw;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#tipsPage {
+  background-color: #fff;
+}
+
+.dark .Tipscontainer {
+  background: var(--priDark);
+}
+
+.Tipscontainer h1 {
+  color: #000;
+  text-align: center;
+}
+
+.dark .Tipscontainer h1 {
+  color: #fff;
+}
+
+.tip-content {
+  font-size: 1.2em;
+  color: #000208;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.dark .tip-content {
+  color: #F3F3FF;
+}
+
+.author {
+  text-align: right;
+  font-style: italic;
+  color: #505050;
+}
+
+.dark .author {
+  color: #fff;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4vh;
+  /* Add some space above buttons */
+}
+
+.next-tip,
+.exit-button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.exit-button {
+  background: #DF1414;
+}
+
+.next-tip:hover {
+  background-color: #0056b3;
+}
+
+.exit-button:hover {
+  background-color: #E2A5A5;
+}
+
+@keyframes slideTo {
+  0% {
+    transform: translateX(40vh);
+  }
+
+  100% {
+    transform: translateX(0);
+    /* End at original position */
+  }
+}
+
+.ads {
+  width: 80vw;
+  border-radius: 5vw 2vh;
+  margin: auto;
+  animation: slideTo 0.5s;
+}
+
+
+/* Basic styling for dropdown */
+.custom-dropdown {
+  display: inline-block;
+}
+
+.custom-dropdown .Grade {
+  border: 1px solid #ccc;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  width: 20vw;
+  border-radius: 0.5rem;
+  z-index: 2;
+}
+
+.dark .custom-dropdown .Grade {
+  box-shadow: 5px 5px 15px rgba(360, 360, 360, 0.35);
+}
+
+.custom-dropdown .options {
+  display: none;
+  animation: appear 0.3s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  width: 70%;
+  border: 0.3rem solid #ccc;
+  border-radius: 2rem;
+  background-color: var(--lite);
+  color: #000;
+  box-shadow: 5px 5px 5px #000;
+}
+
+.custom-dropdown .options.show {
+  display: block;
+  z-index: 7;
+}
+
+.custom-dropdown .option {
+  text-align: center;
+  margin: 1rem;
+  border-bottom: solid 0.05px #C9C9C9;
+}
+
+.custom-dropdown .option:hover {
+  background-color: #f1f1f1;
+}
+
+#myAlertBox {
+  width: 90%;
+  padding: 3rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  background-color: var(--sec);
+  color: #fff;
+  display: none;
+  box-shadow: 8px 7px 5px #000;
+  animation: appear 0.3s;
+  font-size: 1.3rem;
+}
+
+#myAlertMessage {
+  overflow-wrap: break-word;
+}
+
+#myAlertBox #alertOk {
+  float: right;
+  height: 4.5rem;
+  margin: 1.7rem;
+  background-color: var(--pri);
+  color: #fff;
+  border-radius: 50%;
+  border-width: 0.03rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  animation: appear 0.39s;
+}
+
+#myAlertBox_Con {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #fffb;
+  transition: none;
+  animation: none;
+}
+
+.dark #myAlertBox_Con {
+  background-color: #000b;
+}
+
+.NightDayswitch {
+  position: relative;
+  display: inline-block;
+  width: 16vw;
+  height: 3.8vh;
+}
+
+.NightDayswitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.NightDayswitch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #8DE2F3;
+  transition: .4s;
+  border-radius: 10vw;
+}
+
+.NightDayswitch .slider:before {
+  position: absolute;
+  content: "";
+  height: 5vh;
+  width: 5vh;
+  left: -1.9vh;
+  bottom: -0.5vh;
+  background-color: transparent;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider .theme-icon {
+  transform: translateX(6.5vh);
+}
+
+.theme-icon {
+  height: 5vh;
+  width: 5vh;
+  margin: 0px;
+  border-radius: 50%;
+  /* Adjust this size as needed */
+  height: auto;
+  border-radius: 50%;
+  position: absolute;
+  left: -1.9vh;
+  /* Position in the circle */
+  bottom: -0.5vh;
+  /* Position in the circle for consistency */
+  transition: transform 0.4s;
+}
+
+.Update {
+  position: fixed;
+  top: 70vh;
+  height: 30vh;
+  background: #00C8FF;
+  color: #fff;
+  width: 100vw;
+  margin: 0px;
+  padding: 6vw;
+  border-radius: 4vh;
+  display: none;
+
+}
+
+.Update h2 {
+  margin: 2vw;
+}
+
+.Update button {
+  margin: 5vh 5vh 5vh 60vw;
+  height: 9vh;
+  width: 10vh;
+  border-radius: 2vh;
+  font-weight: 600;
+  font-size: 4.3vw;
+  color: #fff;
+  background: var(--pri);
+}
+
+#x {
+  margin: 1vh 10vw 5vw 85vw;
+  font-size: 8vw;
+  color: red;
+}
+
+
+/* Night Mode Styles */
+body.dark {
+  background-color: var(--priDDark);
+  color: #f0f0f0;
+  /* Light text color */
+}
+
+body.dark .app-main {
+  background-color: var(--priDDark);
+  /* Dark background */
+  color: #f0f0f0;
+  /* Light text color */
+}
+
+body.dark .slider {
+  background-color: #ccc;
+}
+
+body.dark .slider:before {
+  transform: translateX(1.625rem);
+}
+
+body.dark .deleter {
+  background-color: #000;
+}
+
+body.dark input {
+  color: #fff;
+  border-color: #fff;
+}
+
+body.dark .options {
+  background-color: var(--sec);
+}
+
+body.dark .option {
+  border-bottom: solid 0.05px var(--priDDark);
+}
+
+body.dark #result {
+  color: #fff;
+}
+
+body.dark section {
+  background-color: transparent;
+}
+
+body.dark .Results_Table {
+  color: #fff;
+}
+
+header {
+  color: white;
+  overflow: hidden;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  animation: fadeIn 1s ease forwards;
+
+}
