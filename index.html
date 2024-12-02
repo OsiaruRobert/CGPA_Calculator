@@ -15,6 +15,22 @@
     }
   </style>
   <script src="ds:/Sys/app.js"></script>
+   
+  <script>
+  cfg.Portrait;
+
+function OnStart()
+{
+    app.Animate( ShowRotation, 2 );
+    setTimeout( 'app.SetOrientation("landscape")', 5000 );
+}
+
+function ShowRotation()
+{
+    var mode = app.GetRotation();
+    app.ShowPopup( mode );
+}
+</script>
 </head>
 
 <body id="body">
@@ -199,7 +215,7 @@
         <h2 class="Aux_Title">About</h2>
       </div>
       <div id="aboutContainer">
-        <img class="icon" src="Img/mainIcon.png" alt="" />
+        <img class="icon" src="Img/CGPA.png" alt="" />
         <h3>CGPA Calculator</h3>
         <em>version 1.7.0</em><br /><br />
         <b>Developed by:</b><br />
@@ -1243,7 +1259,7 @@ ${GradeOption}
         Ads_Alt_S in built ads 1 Ads_Alt_E
         Ads_Owner_S Owner1 Ads_Owner_E
 
-        Ads_Img_S Img/adsTest.jpg Ads_Img_E
+        Ads_Img_S  Img/adsTest.jpg  Ads_Img_E
         Ads_Url_S https://2u.wordpress.com Ads_Url_E
         Ads_Alt_S in built ads2 Ads_Alt_E
         Ads_Owner_S onwer2 Ads_Owner_E
