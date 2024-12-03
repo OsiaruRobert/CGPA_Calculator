@@ -4,13 +4,13 @@ const columns = `
           <input class="time" type="time">
           <input class="time" type="time">
         </div>
-        <input class="TC" type="text" placeholder="Sunday">
-        <input class="TC" type="text" placeholder="Monday">
-        <input class="TC" type="text" placeholder="Tuesday">
-        <input class="TC" type="text" placeholder="Wednesday">
-        <input class="TC" type="text" placeholder="Thursday">
-        <input class="TC" type="text" placeholder="Friday">
-        <input class="TC" type="text" placeholder="Saturday">
+        <input class="TC" type="text">
+        <input class="TC" type="text">
+        <input class="TC" type="text">
+        <input class="TC" type="text">
+        <input class="TC" type="text">
+        <input class="TC" type="text">
+        <input class="TC" type="text">
       <img class="deleteT" src="Img/deleterLight.png" alt="" />
       `;
 
@@ -47,7 +47,7 @@ function saveTimeTable() {
   }
 
   localStorage.setItem("TimeTable", JSON.stringify(TimeTable));
-  //myAlertWork("TimeTable Saved ");
+  myAlertWork("TimeTable Saved ");
 }
 
 //Function to view The saved Time Table 
@@ -61,22 +61,20 @@ function viewTimeTable() {
     let Te_dis = document.querySelectorAll(".time");
 
     for (let r = 0; r < Co_dis.length; r++) {
-      console.log(TimeTable.Cr[r]);
       Co_dis[r].value = TimeTable.Cr[r];
     }
     for (let r = 0; r < Te_dis.length; r++) {
-      console.log(TimeTable.Tm[r]);
       Te_dis[r].value = TimeTable.Tm[r];
     }
     DeleteT();
   } else {
-    alert('No Saved timetable')
+    myAlertWork("No TimeTable Saved ");
   }
 }
 
 //Function to Delete in table 
 function DeleteT() {
-   let table = document.getElementById('timetable_container');
+  let table = document.getElementById('timetable_container');
   table.addEventListener('click',
     (event) => {
       if (event.target.classList.contains('deleteT')) {
@@ -87,22 +85,24 @@ function DeleteT() {
           column.style.animation = "smaller 1s";
           setTimeout(function() {
             column.remove();
-          }, 900);
-          
+          }, 990);
         }
       }
-  });
+    });
 }
-viewTimeTable();
-  document.getElementById('addColumn').addEventListener('click', () => {
-    addColum();
-  });
 
-  document.getElementById('saveTimeTable_btn').addEventListener('click', () => {
-    saveTimeTable();
-  });
+if (JSON.parse(localStorage.getItem("TimeTable"))) {
+  viewTimeTable();
+}
 
-  document.getElementById('viewTimeTable_btn').addEventListener('click', () => {
-    viewTimeTable();
-  });
-  
+document.getElementById('addColumn').addEventListener('click', () => {
+  addColum();
+});
+
+document.getElementById('saveTimeTable_btn').addEventListener('click', () => {
+  saveTimeTable();
+});
+
+document.getElementById('viewTimeTable_btn').addEventListener('click', () => {
+  viewTimeTable();
+});

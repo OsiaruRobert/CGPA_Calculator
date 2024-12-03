@@ -1,0 +1,85 @@
+
+
+#timetable {
+  overflow-x: scroll;
+  overflow-y: visible;
+  height: 60vh;
+  margin: 5vh 4vh;
+}
+
+#timetable_container {
+  display: flex;
+  height: 45vh;
+}
+
+.days,
+.cols {
+  width: 25vw;
+  border: solid 0.1vh;
+  text-align: center;
+  display: block;
+}
+
+.days div,
+.cols input {
+  height: 5vh;
+  display: block;
+  width: 24.5vw;
+  margin: 1vw auto;
+  text-align: center;
+  border-style: none;
+  border-bottom-style: solid;
+  border-color: #000;
+}
+
+.days div {
+  font-weight: 700;
+  border-width: 0.6vh;
+}
+
+.timeContainer {
+  height: 5vh;
+  border-width: 0.6vh;
+}
+
+.timeContainer input {
+  margin: 0.5vh auto;
+  height: 2vh;
+}
+
+.TableControl {
+  display: grid;
+  grid-template-columns: 20vw 20vw 20vw;
+  height: 12vh;
+  width: 80vw;
+  padding: 4vh;
+  margin: 3vh auto;
+  gap: 6vw;
+}
+
+.TableControl>* {
+  height: 10vh;
+  background: #377BF2;
+  border-radius: 3vw;
+  color: var(--lite);
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  overflow: hidden;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+#addColumn {
+  font-size: 8vh;
+  font-weight: 800;
+}
+
+.deleteT {
+  width: 4.9vh;
+  height: 5.2vh;
+  border-radius: 3vh;
+  background: red;
+  margin-left: 2vh;
+}
