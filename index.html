@@ -4,9 +4,11 @@
   <title>GPA Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="Html/timetable.css">
   <link rel="stylesheet" href="Html/style.css" type="text/css" />
   <link rel="stylesheet" href="Html/UI.css" type="text/css" />
-
+  <link rel="stylesheet" href="Html/note.css">
+  
   <style type="text/css" media="all">
     .app-container,
     #CGPA_Div,
@@ -19,8 +21,7 @@
   <script>
     cfg.Portrait;
 
-    function OnStart()
-    {
+    function OnStart(){
       app.Animate(ShowRotation, 2);
       setTimeout('app.SetOrientation("landscape")', 5000);
     }
@@ -180,12 +181,7 @@
         </div>
       </section>
 
-      <div id="myAlertBox_Con">
-        <div id="myAlertBox">
-          <p id="myAlertMessage"></p>
-          <button id="alertOk" type="button">OK, Thanks</button>
-        </div>
-      </div>
+
     </main>
 
     <section id="tipsPage" class="AuxPage">
@@ -290,94 +286,145 @@
 
       </div>
     </section>
+
+
+    <section id="notePage" class="AuxPage">
+      <div class="head">
+        <div class="close_Aux">
+          X
+        </div>
+        <h2 class="Aux_Title">NoteBook</h2>
+      </div>
+        <div class="stylers">
+    <button id="EdH1" onclick="document.execCommand('formatBlock', false, 'h1')">H1</button>
     
-        <section id="timetablePage" class="AuxPage">
-            <div class="head">
+    <button id="EdH2" onclick="document.execCommand('formatBlock', false, 'h2')">H2</button>
+
+    <button id="EdBullet" onclick="document.execCommand('insertUnorderedList')">• List</button>
+
+    <button id="EdBold" onclick="document.execCommand('bold')"><b>B</b></button>
+
+    <button id="EdItalic" onclick="document.execCommand('italic')"> <i>Italic</i></button>
+    
+    <button onclick="document.execCommand('underline')"><u>U</u></button>
+  </div>
+
+
+  <div id="notepad" contenteditable="true" placeholder="Type your notes here...">Type your notes here...</div>
+
+
+  <div class="commanders">
+    <div id="saveButton">Save Note</div>
+    <div id="clearButton">Clear Notes</div>
+  </div>
+
+  <h3 class="st"><u>Saved Notes</u></h3>
+
+  <div id="notesContainer">
+
+  </div>
+      
+    </section>
+    
+      
+    <section id="timetablePage" class="AuxPage">
+      <div class="head">
         <div class="close_Aux">
           X
         </div>
         <h2 class="Aux_Title">Timetable</h2>
       </div>
-  <section id="timetable">
-    <div id="timetable_container">
-      <div class="days">
-        <div id="first" class="DaysH">Days \Time</div>
-        <div>
-          Sunday
+      <section id="timetable">
+        <div id="timetable_container">
+          <div class="days">
+            <div id="first" class="DaysH">Days \Time</div>
+            <div>
+              Sunday
+            </div>
+            <div>
+              Monday
+            </div>
+            <div>
+              Tuesday
+            </div>
+            <div>
+              Wednesday
+            </div>
+            <div>
+              Thursday
+            </div>
+            <div>
+              Friday
+            </div>
+            <div>
+              Saturday
+            </div>
+          </div>
+          <div class="cols">
+            <div class="timeContainer">
+              <input class="time" type="time">
+              <input class="time" type="time">
+            </div>
+            <input class="TC" type="text">
+            <input class="TC" type="text">
+            <input class="TC" type="text">
+            <input class="TC" type="text">
+            <input class="TC" type="text">
+            <input class="TC" type="text">
+            <input class="TC" type="text">
+            <img class="deleteT" src="Img/deleterLight.png" alt="" />
+          </div>
         </div>
-        <div>
-          Monday
-        </div>
-        <div>
-          Tuesday
-        </div>
-        <div>
-          Wednesday
-        </div>
-        <div>
-          Thursday
-        </div>
-        <div>
-          Friday
-        </div>
-        <div>
-          Saturday
-        </div>
+      </section>
+      <div class="TableControl">
+        <img src="Img/saveR.png" id="saveTimeTable_btn" alt="Save" />
+        <div type="button" id="addColumn">+</div>
+        <img src="Img/view.png" id="viewTimeTable_btn" alt="Veiw" />
       </div>
-      <div class="cols">
-        <div class="timeContainer">
-          <input class="time" type="time">
-          <input class="time" type="time">
-        </div>
-        <input class="TC" type="text">
-        <input class="TC" type="text">
-        <input class="TC" type="text">
-        <input class="TC" type="text">
-        <input class="TC" type="text">
-        <input class="TC" type="text">
-        <input class="TC" type="text">
-        <img class="deleteT" src="Img/deleterLight.png" alt="" />
-      </div>
-    </div>
+
+  </div>
+
+
   </section>
-  <div class="TableControl">
-    <img src="Img/saveR.png" id="saveTimeTable_btn" alt="Save" />
-    <div type="button" id="addColumn">+</div>
-    <img src="Img/view.png" id="viewTimeTable_btn" alt="Veiw" />
+
+  <div class="nav" id="sideNav">
+    <span id="tipsButton">
+      <img class="navIcon" src="Img/icons8-bulb-96.png" alt="" />
+      <span>Daily Tips </span>
+    </span>
+    <span id="timetableButton">
+      <img class="navIcon" src="Img/help.png" alt="" />
+      <span>Timetable</span>
+    </span>
+      <span id="noteButton">
+      <img class="navIcon" src="Img/help.png" alt="" />
+      <span>NoteBook</span>
+    </span>
+    <span id="aboutButton">
+      <img class="navIcon" src="Img/aboutus.png" alt="" />
+      <span>About</span>
+
+    </span>
+    <span id="manualButton">
+      <img class="navIcon" src="Img/help.png" alt="" />
+      <span>Help</span>
+
+    </span>
+    <span id="shareButton">
+      <img class="navIcon" src="Img/share.png" alt="" />
+      <span>Share app</span>
+    </span>
   </div>
-
-  </div>
-
-
-        </section>
-
-    <div class="nav" id="sideNav">
-      <span id="tipsButton">
-        <img class="navIcon" src="Img/icons8-bulb-96.png" alt="" />
-        <span>Daily Tips </span>
-      </span>
-      <span id="timetableButton">
-        <img class="navIcon" src="Img/help.png" alt="" />
-        <span>Timetable</span>
-      </span>
-      <span id="aboutButton">
-        <img class="navIcon" src="Img/aboutus.png" alt="" />
-        <span>About</span>
-
-      </span>
-      <span id="manualButton">
-        <img class="navIcon" src="Img/help.png" alt="" />
-        <span>Help</span>
-
-      </span>
-      <span id="shareButton">
-        <img class="navIcon" src="Img/share.png" alt="" />
-        <span>Share app</span>
-      </span>
-    </div>
   </div>
   </div>
   <!--Update app.-->
+  <div id="myAlertBox_Con">
+    <div id="myAlertBox">
+      <p id="myAlertMessage"></p>
+      <button id="alertOk" type="button">OK, Thanks</button>
+    </div>
+  </div>
+
   <div class="Update" id="Update">
     <span id="x">x</span>
     <h2>Please update the app</h2>
@@ -386,11 +433,11 @@
       Update
     </a>
   </div>
-  
-  
+
+
   <script src="Html/UI.js" type="text/javascript" charset="utf-8"></script>
   <script src="Html/tips.js" type="text/javascript" charset="utf-8"></script>
-    <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
+  <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
     app.EnableBackKey(false);
@@ -1493,7 +1540,8 @@ ${GradeOption}
     setInterval(displayAds, 10000);
   </script>
 
-
+  <script src="Html/timetable.js"></script>
+    <script src="Html/note.js"></script>
 </body>
 
 </html>

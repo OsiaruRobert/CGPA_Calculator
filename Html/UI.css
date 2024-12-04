@@ -44,7 +44,7 @@
 }
 
 .nav {
-  height: 40vh;
+  height: 60vh;
   width: 40vw;
   font-size: 5vw;
   position: fixed;
@@ -92,13 +92,13 @@
   right: 3vh;
   height: 5vh;
   width: 5vh;
-  display: block;
+  display: none;
 }
 
 .AuxPage {
   position: fixed;
   top: 0;
-  z-index: 12;
+  z-index: 9;
   overflow-y: scroll;
   width: 100vw;
   height: 100vh;
@@ -110,7 +110,7 @@
 }
 
 .dark .AuxPage,
-.dark #tipsPage {
+.dark #tipsPage,.dark #notePage {
   background-color: var(--priDDark);
 }
 
@@ -265,7 +265,6 @@ details ol li:before {
 
 .dark #manualPage .head {}
 
-
 .Tipscontainer {
   max-width: 80vw;
   margin: 20vh auto;
@@ -411,20 +410,20 @@ details ol li:before {
 }
 
 #myAlertBox {
-  width: 90%;
-  padding: 3rem;
+  width: 90vw;
+  padding: 5vw;
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 3;
+  z-index: 11;
   transform: translate(-50%, -50%);
   border-radius: 1rem;
   background-color: var(--sec);
   color: #fff;
-  display: none;
   box-shadow: 8px 7px 5px #000;
   animation: appear 0.3s;
   font-size: 1.3rem;
+  display: none;
 }
 
 #myAlertMessage {
@@ -432,9 +431,10 @@ details ol li:before {
 }
 
 #myAlertBox #alertOk {
-  float: right;
-  height: 4.5rem;
-  margin: 1.7rem;
+  height: 20vw;
+  width: 20vw;
+  margin: 4vh 4vw auto 50vw;
+  padding: 0.5vh;
   background-color: var(--pri);
   color: #fff;
   border-radius: 50%;
@@ -453,6 +453,7 @@ details ol li:before {
   right: 0;
   left: 0;
   bottom: 0;
+  z-index: 10;
   background-color: #fffb;
   transition: none;
   animation: none;
@@ -545,7 +546,7 @@ input:checked+.slider .theme-icon {
   font-size: 4.3vw;
   color: #fff;
   background: var(--pri);
-  display: block ;
+  display: block;
 }
 
 #x {

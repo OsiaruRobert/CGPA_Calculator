@@ -26,7 +26,7 @@ document.addEventListener('click', (event) => {
 
 //Page navigation
 let navs = ["tips", "about",
-    "manual",'timetable'];
+    "manual",'timetable','note'];
 let NavPages = [];
 
 function navigatePages(prefix) {

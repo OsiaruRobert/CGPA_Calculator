@@ -18,6 +18,12 @@
   display: block;
 }
 
+.dark .days,
+.dark .cols {
+  border-color: #f4f4f4;
+}
+
+
 .days div,
 .cols input {
   height: 5vh;
@@ -28,6 +34,11 @@
   border-style: none;
   border-bottom-style: solid;
   border-color: #000;
+}
+
+.dark .days div,
+.dark .cols input {
+  border-color: #f4f4f4;
 }
 
 .days div {
