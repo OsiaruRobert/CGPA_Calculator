@@ -19,14 +19,14 @@ document.addEventListener('click', (event) => {
   let isClickOnmenuButton = menuButton.contains(event.target);
   // Check if the click was outside of the nav and the toggle button
   if (!isClickInsideNav && !isClickOnmenuButton) {
-    specificStyle(sideNav, "right", "-40vw");
+    specificStyle(sideNav, "right", "-50vw");
     // Hide the menu
   }
 });
 
 //Page navigation
 let navs = ["tips", "about",
-    "manual",'timetable','note'];
+    "manual", 'timetable', 'note'];
 let NavPages = [];
 
 function navigatePages(prefix) {
@@ -35,10 +35,16 @@ function navigatePages(prefix) {
   NavPages.push(window[prefix + "Page"]);
   window[prefix + "Button"].addEventListener("click",
     () => {
-      specificStyle(window[prefix + "Page"], "display", "block");
+
       setTimeout(function() {
-        specificStyle(sideNav, "right", "-40vw");
-      }, 100);
+        specificStyle(window[prefix + "Page"], "display", "block");
+      }, 350);
+
+
+      setTimeout(function() {
+        specificStyle(sideNav, "right", "-50vw");
+      }, 200);
+
     })
 };
 navs.forEach((item) => {
@@ -57,9 +63,8 @@ document.querySelectorAll('.close_Aux').forEach((C) => {
   })
 })
 
-
 document.getElementById("exitTips").addEventListener('click', () => {
   document.querySelectorAll('.AuxPage').forEach((p) => {
     p.style.display = "none";
   })
-})
+});

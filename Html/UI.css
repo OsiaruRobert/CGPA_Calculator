@@ -45,11 +45,11 @@
 
 .nav {
   height: 60vh;
-  width: 40vw;
+  width: 50vw;
   font-size: 5vw;
   position: fixed;
   top: 12vh;
-  right: -40vw;
+  right: -50vw;
   z-index: 10;
   background: var(--pri);
   display: block;
@@ -59,15 +59,16 @@
 }
 
 .nav>span {
-  width: 40vw;
+  width: 50vw;
   height: 10vh;
-  margin: 0px;
+  margin: auto;
   display: block;
   padding: 3vh 3vw 3vh 2vw;
   text-decoration: none;
   color: white;
   display: grid;
   grid-template-columns: 1fr 9fr;
+  overflow: hidden;
 }
 
 .nav>span .navIcon {
@@ -77,7 +78,9 @@
 }
 
 .nav>span span {
-  margin: 1vh 0px;
+  margin: 1.5vh 0px 1vh 0px;
+  padding-left: 3vw;
+  overflow: hidden;
 }
 
 .nav>span:not(:last-child) {
@@ -110,7 +113,8 @@
 }
 
 .dark .AuxPage,
-.dark #tipsPage,.dark #notePage {
+.dark #tipsPage,
+.dark #notePage {
   background-color: var(--priDDark);
 }
 

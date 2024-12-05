@@ -1,4 +1,3 @@
-
 #notesContainer {
   margin: 5vh auto;
 }
@@ -26,7 +25,7 @@
   border: 0.4vh solid #ccc;
   border-radius: 3vh;
   padding: 2vh;
-  margin :0px 10vw;
+  margin: 0px 10vw;
   font-size: 3vh;
   background-color: #fff;
   outline: none;
@@ -36,17 +35,18 @@
 #notepad ul {
   margin-left: 5vh;
 }
-.dark #notepad{
+
+.dark #notepad {
   background-color: var(--priD);
   color: #fff;
 }
+
 .stylers {
   width: 80vw;
-  margin: 2vh 6vw 1vh 14vw;
+  margin: 6vh 6vw 6vh 14vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 3vh;
-  margin-bottom: 4vh;
 }
 
 .stylers button {
@@ -55,31 +55,41 @@
   font-weight: 600;
   font-size: 1.8vh;
   background-color: #4A93FF;
+  color: #fff;
   border: none;
   border-radius: 1vh;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
+
+.dark .stylers button {
+  box-shadow: 0 10px 15px rgba(360, 360, 360, 0.2);
+}
+
 #EdH1 {
   font-weight: 1000;
   font-size: 4vh
 }
+
 #EdH2 {
   font-weight: 800;
   font-size: 3vh
 }
+
 #EdBold {
   font-weight: 700;
   font-size: 2.6vh
 }
-.dark .st{
+
+.dark .st {
   color: #CCCCCC;
 }
 
-.delete-button, .edit-button  {
+.delete-button,
+.edit-button {
   height: 5vh;
-  width: 8.4vh;
+  width: 8.8vh;
   position: absolute;
-  right: 3.5vh;
+  right: 3.3vh;
   top: 10px;
   background-color: red;
   color: white;
@@ -89,7 +99,7 @@
 
 .edit-button {
   position: absolute;
-  right: 9.5vh;
+  right: 10vh;
   top: 10px;
   background-color: blue;
 }
@@ -97,7 +107,7 @@
 .commanders {
   display: grid;
   grid-template-columns: 40vw 40vw;
-  margin: 2vh 5vw 4vh 5vw;
+  margin: 4vh 5vw 4vh 5vw;
   width: 90vw;
   gap: 4vw;
   height: 6vh;
@@ -110,8 +120,13 @@
   height: 6vh;
   border-radius: 2vh;
   background: deepskyblue;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 3vw 4vw 5vw rgba(0, 0, 0, 0.2);
 }
-#clearButton{
-  background: #5A8A9E;
+
+.dark .commanders>* {
+  box-shadow: 3vw 5vw 7vw rgba(360, 360, 360, 0.2);
+}
+
+#clearButton {
+  background: #AAAAAA;
 }

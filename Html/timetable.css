@@ -1,8 +1,8 @@
 #timetable {
   overflow-x: scroll;
   overflow-y: visible;
-  height: 60vh;
-  margin: 5vh 4vh;
+  height: 50vh;
+  margin: 5vh 4vh 3vh 4vh;
 }
 
 #timetable_container {
@@ -58,31 +58,36 @@
 
 .TableControl {
   display: grid;
-  grid-template-columns: 20vw 20vw 20vw;
+  grid-template-columns: 25vw 25vw 25vw;
   height: 12vh;
   width: 80vw;
-  padding: 4vh;
-  margin: 3vh auto;
+  padding: 4vw;
+  margin: 0px 15vw 0px 2vw;
   gap: 6vw;
 }
 
-.TableControl>* {
-  height: 10vh;
-  background: #377BF2;
+.TableControl>span{
+  height: 6vh;
+  width: 25vw;
+  background: var(--sec);
   border-radius: 3vw;
   color: var(--lite);
+  padding: 3vw;
   margin: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  font-size: 3vh;
   overflow: hidden;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap:2.4vw;
 }
-
-#addColumn {
-  font-size: 8vh;
-  font-weight: 800;
+.TableControl img{
+  height: 6.5vw;
+  width: 6.5vw;
 }
 
 .deleteT {

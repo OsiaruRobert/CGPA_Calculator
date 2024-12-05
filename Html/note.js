@@ -58,7 +58,7 @@ document.getElementById("saveButton").addEventListener("click", function() {
   }
 
   localStorage.setItem("notes", JSON.stringify(notes));
-  notepad.innerHTML = "Type your notes here..."; // Clear the notepad
+  notepad.innerHTML = " "; // Clear the notepad
   displayNotes(); // Refresh the notes list
   myAlertWork("Note saved!");
 });
@@ -74,7 +74,7 @@ function deleteNote(index) {
 
 // Clear all notes
 document.getElementById("clearButton").addEventListener("click", function() {
-  notepad.innerHTML = "Type your notes here..."; // Clear the notepad
+  notepad.innerHTML = " "; // Clear the notepad
   myAlertWork("notes cleared!");
 });
 
