@@ -2,6 +2,7 @@
   overflow-x: scroll;
   overflow-y: visible;
   height: 50vh;
+  margin: 5vh 4vw 2vh 4vw;
 }
 
 #timetable_container {
