@@ -3,7 +3,7 @@
 <head>
   <title>CGPA Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="stylesheet" href="Html/note.css">
   <link rel="stylesheet" href="Html/timetable.css">
   <link rel="stylesheet" href="Html/style.css" type="text/css" />
@@ -19,7 +19,7 @@
   <script src="ds:/Sys/app.js"></script>
 
   <script>
-    // cfg.Portrait;
+  // cfg.Portrait;
 
     function OnStart() {
       app.Animate(ShowRotation, 2);
@@ -377,7 +377,7 @@
         </div>
       </section>
       <div class="TableControl">
-        
+
         <span id="saveTimeTable_btn">
           <span>Save</span> <img src="Img/saveR.png" alt="Save" />
         </span>
@@ -415,17 +415,17 @@
     </span>
 
     <span class="navItem" id="aboutButton">
-      <img class="navIcon" src="/Img/icons8-about-100.png" alt="" />
+      <img class="navIcon" src="Img/icons8-about-100.png" alt="" />
       <span>About</span>
     </span>
 
     <span class="navItem" id="manualButton">
-      <img class="navIcon" src="/Img/icons8-help-100.png" alt="" />
+      <img class="navIcon" src="Img/icons8-help-100.png" alt="" />
       <span>Help</span>
     </span>
 
     <span class="navItem" id="shareButton">
-      <img class="navIcon" src="/Img/icons8-share-100.png" alt="" />
+      <img class="navIcon" src="Img/icons8-share-100.png" alt="" />
       <span>Share app</span>
     </span>
 
@@ -455,7 +455,7 @@
   <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
-    //  app.EnableBackKey(false);
+  //  app.EnableBackKey(false);
 
     let OnBack = () => {
       app.Exit();
@@ -481,6 +481,10 @@
       Id(ele).style.display = visi;
     }
 
+    function specificStyle(ele, myStyle, myStyleValue) {
+      ele.style[myStyle] = myStyleValue;
+    }
+
     function myAlertWork(message) {
       SeeOrHide("myAlertBox_Con", "block");
       SeeOrHide("myAlertBox", "block");
@@ -489,8 +493,132 @@
         SeeOrHide("myAlertBox", "none");
         SeeOrHide("myAlertBox_Con", "none");
       });
+    }
+
+    //Navigation Handler
+
+    //Tells me where i am/was.
+    let MyApp_Location;
+
+    //Page navigation
+    let navs = ["tips", "about",
+    "manual", 'timetable', 'note'];
+    let NavPages = [];
+
+    function navigatePages(prefix) {
+      window[prefix + "Button"] = Id(`${prefix}Button`);
+      window[prefix + "Page"] = Id(`${prefix}Page`);
+      NavPages.push(window[prefix + "Page"]);
+
+      window[prefix + "Button"].addEventListener("click",
+        () => {
+          OnBack = () => {
+            exit_Aux();
+            From_AuxPage();
+          };
+          
+          setTimeout(function() {
+            specificStyle(window[prefix + "Page"], "display", "block");
+          }, 350);
+          setTimeout(function() {
+            specificStyle(sideNav, "right", "-50vw");
+          }, 200);
+        })
+
+    };
+
+    navs.forEach((item) => {
+      navigatePages(item);
+    });
+
+    function from_Calculator_to_GPA_interface() {
+      Id('TableContainer').innerHTML = " ";
+      Id("numberOfCourse").value = " ";
+      SeeOrHide("GPA_Ads", "block");
+      SeeOrHide("Calculator", "none")
+      SeeOrHide("GPA_interface", "grid");
+      myscrollUp();
+      OnBack = () => {
+        from_Calculator_to_Hone();
+      };
+      MyApp_Location = 'GPA';
+    }
+
+    function from_Calculator_to_CGPA_interface() {
+      Id("CGPA_Container").innerHTML = " ";
+      Id("CurrentLevel").value = " ";
+      SeeOrHide("checkCGPASection",
+        "none");
+      SeeOrHide("CCGPA_Container",
+        "none");
+      SeeOrHide("CGPA_interface",
+        "grid");
+      SeeOrHide("CGPA_Ads",
+        "block");
+      myscrollUp();
+      OnBack = () => {
+        from_Calculator_to_Hone();
+      };
+      MyApp_Location = 'CGPA';
 
     }
+
+    function from_Calculator_to_Hone() {
+      SeeOrHide("GPA_Div",
+        "none");
+      SeeOrHide("CGPA_Div",
+        "none");
+      SeeOrHide("app_container",
+        "none");
+      SeeOrHide("startPage",
+        "block");
+      myscrollUp();
+      //Can Exit app..
+      OnBack = () => {
+        app.Exit();
+      };
+      MyApp_Location = 'Home';
+
+    }
+
+    function From_AuxPage() {
+      if (MyApp_Location === 'CGPA') {
+        OnBack = () => {
+          from_Calculator_to_Hone();
+        };
+      } else if (MyApp_Location === 'GPA') {
+        OnBack = () => {
+          from_Calculator_to_Hone();
+        };
+      } else if (MyApp_Location === 'CGPA_Cal') {
+        OnBack = () => {
+          from_Calculator_to_CGPA_interface();
+        };
+      } else if (MyApp_Location === 'GPA_Cal') {
+        OnBack = () => {
+          from_Calculator_to_GPA_interface();
+        };
+      } else {
+        console.log('at home');
+      }
+    }
+
+    function exit_Aux() {
+      document.querySelectorAll('.AuxPage').forEach((p) => {
+        p.style.display = "none";
+      })
+    }
+
+    document.querySelectorAll('.close_Aux').forEach((C) => {
+      C.addEventListener('click', () => {
+        exit_Aux();
+        From_AuxPage();
+      })
+    })
+
+
+
+
 
     //Order the numbering
     function resetNumbering() {
@@ -768,18 +896,6 @@ ${GradeOption}
       };
     }
 
-    function from_Calculator_to_GPA_interface() {
-      Id('TableContainer').innerHTML = " ";
-      Id("numberOfCourse").value = " ";
-      SeeOrHide("GPA_Ads", "block");
-      SeeOrHide("Calculator", "none")
-      SeeOrHide("GPA_interface", "grid");
-      myscrollUp();
-      OnBack = () => {
-        from_Calculator_to_Hone();
-      }
-    }
-
     //Show table
     function displayTable() {
       addTable();
@@ -807,6 +923,8 @@ ${GradeOption}
                 Please Enter the Number of courses you did!`);
         } else {
           displayTable();
+          MyApp_Location = 'GPA_Cal';
+
         }
       };
     });
@@ -1128,45 +1246,12 @@ ${GradeOption}
           }
           OnBack = () => {
             from_Calculator_to_CGPA_interface();
-          }
+          };
+          MyApp_Location = 'CGPA_Cal';
         }
       };
     });
 
-    function from_Calculator_to_CGPA_interface() {
-      Id("CGPA_Container").innerHTML = " ";
-      Id("CurrentLevel").value = " ";
-      SeeOrHide("checkCGPASection",
-        "none");
-      SeeOrHide("CCGPA_Container",
-        "none");
-      SeeOrHide("CGPA_interface",
-        "grid");
-      SeeOrHide("CGPA_Ads",
-        "block");
-      myscrollUp();
-      OnBack = () => {
-        from_Calculator_to_Hone();
-      }
-
-    }
-
-    function from_Calculator_to_Hone() {
-      SeeOrHide("GPA_Div",
-        "none");
-      SeeOrHide("CGPA_Div",
-        "none");
-      SeeOrHide("app_container",
-        "none");
-      SeeOrHide("startPage",
-        "block");
-      myscrollUp();
-      //Can Exit app..
-      OnBack = () => {
-        app.Exit();
-      }
-
-    }
     //The back to home which is startPage
     document.querySelectorAll('.ToHome').forEach((back) => {
       back.addEventListener('click', () => {
@@ -1296,7 +1381,8 @@ ${GradeOption}
       //Take us to home screen
       OnBack = () => {
         from_Calculator_to_Hone();
-      }
+      };
+      MyApp_Location = 'CGPA';
     });
 
     GPA_Button.addEventListener("click", () => {
@@ -1308,7 +1394,8 @@ ${GradeOption}
       //Take us to home screen
       OnBack = () => {
         from_Calculator_to_Hone();
-      }
+      };
+      MyApp_Location = 'GPA';
     });
 
 

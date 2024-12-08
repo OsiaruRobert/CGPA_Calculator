@@ -24,44 +24,8 @@ document.addEventListener('click', (event) => {
   }
 });
 
-//Page navigation
-let navs = ["tips", "about",
-    "manual", 'timetable', 'note'];
-let NavPages = [];
-
-function navigatePages(prefix) {
-  window[prefix + "Button"] = Id(`${prefix}Button`);
-  window[prefix + "Page"] = Id(`${prefix}Page`);
-  NavPages.push(window[prefix + "Page"]);
-  window[prefix + "Button"].addEventListener("click",
-    () => {
-
-      setTimeout(function() {
-        specificStyle(window[prefix + "Page"], "display", "block");
-      }, 350);
 
 
-      setTimeout(function() {
-        specificStyle(sideNav, "right", "-50vw");
-      }, 200);
-
-    })
-};
-navs.forEach((item) => {
-  navigatePages(item);
-});
-//display none or block
-function SeeOrHide(ele, visi) {
-  Id(ele).style.display = visi;
-}
-
-document.querySelectorAll('.close_Aux').forEach((C) => {
-  C.addEventListener('click', () => {
-    document.querySelectorAll('.AuxPage').forEach((p) => {
-      p.style.display = "none";
-    })
-  })
-})
 
 document.getElementById("exitTips").addEventListener('click', () => {
   document.querySelectorAll('.AuxPage').forEach((p) => {

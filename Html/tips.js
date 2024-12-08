@@ -90,8 +90,8 @@ function displayTips() {
   //displayTips
   Id('tipAuthor').innerText = `~${current_Tip.author}`;
   Id('tipContent').innerText = current_Tip.content;
-}
+};
 
 document.getElementById('nextTip').addEventListener('click', () => {
   displayTips();
-})
+});
