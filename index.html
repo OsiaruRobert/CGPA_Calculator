@@ -119,8 +119,9 @@
             <input max="2" type="number" placeholder=" 1 - 100" id="numberOfCourse" />
           </div>
 
-          <img src="Img/adsTest.jpg" class="ads" id="GPA_Ads" />
-        </div>
+<div id="GPA_Ads_Container">
+</div>   
+</div>
 
 
         <div id="Calculator" class="Calculator">
@@ -154,13 +155,16 @@
             <b>Current Year</b>
             <input max="2" type="number" placeholder=" 1 - 10" id="CurrentLevel" />
           </div>
-          <img src="Img/adsTest.jpg" class="ads" id="CGPA_Ads" />
+          
+<div id="CGPA_Ads_Container">
+</div>
         </section>
 
 
 
         <div id="CCGPA_Container">
           <img id="CGPA_back" class="To_CI" src=" Img/X.png" alt="Back" />
+          
           <section id="CGPA_Container"></section>
         </div>
 
@@ -1471,16 +1475,27 @@ ${GradeOption}
 
     //Ads in buult
     let In_Built_Ads = `
-        Ads_Img_S Img/adsTest.jpg Ads_Img_E
-        Ads_Url_S https://1u.wordpress.com Ads_Url_E 
-        Ads_Alt_S in built ads 1 Ads_Alt_E
-        Ads_Owner_S Owner1 Ads_Owner_E
-
-        Ads_Img_S  Img/adsTest.jpg  Ads_Img_E
-        Ads_Url_S https://2u.wordpress.com Ads_Url_E
-        Ads_Alt_S in built ads2 Ads_Alt_E
-        Ads_Owner_S onwer2 Ads_Owner_E
-        `;
+  Ads_MediaType_S iframe Ads_MediaType_E
+  Ads_Img_S Img/adsTest.jpg Ads_Img_E
+  Ads_Vid_S Img/Ads.mp4 Ads_Vid_E
+  Ads_ShowTime_S 1000 Ads_ShowTime_E
+  Ads_Url_S https://1.wordpress.com Ads_Url_E
+  Ads_Alt_S Online With Beta Ads_Alt_E
+  Ads_Category_S Education Ads_Category_E
+  Ads_SubCategory_S Toturial Ads_SubCategory_E
+  Ads_Owner_S Owner1 Ads_Owner_E
+ 
+ 
+  Ads_MediaType_S img Ads_MediaType_E
+  Ads_Img_S Img/adsTest.jpg Ads_Img_E
+  Ads_Vid_S Img/Ads.mp4 Ads_Vid_E
+  Ads_ShowTime_S 1000 Ads_ShowTime_E
+  Ads_Url_S https://1.wordpress.com Ads_Url_E
+  Ads_Alt_S Online With Beta Ads_Alt_E
+  Ads_Category_S Education Ads_Category_E
+  Ads_SubCategory_S Toturial Ads_SubCategory_E
+  Ads_Owner_S Owner1 Ads_Owner_E
+  `;
 
     let raw_Ads = "Nothing ";
 
@@ -1534,6 +1549,18 @@ ${GradeOption}
               Id("Update").style = 'display:none';
             });
           }
+
+          //Version control
+          let If_Message = raw_Ads.slice(raw_Ads.indexOf("Start_Of_If_Message") + 19, raw_Ads.indexOf("End_Of_If_Message"));
+
+         let MyMessage = raw_Ads.slice(raw_Ads.indexOf("Start_Of_Message") + 16, raw_Ads.indexOf("End_Of_Message"));
+
+
+          //Check for message.
+          if (If_Message) {
+            myAlertWork(MyMessage)
+          }
+          
           console.log('Fetching in completed')
         }
       }
@@ -1547,6 +1574,20 @@ ${GradeOption}
 
     //Arrange the Ads and store them locally
     function arrayAds(raw_text) {
+    /*Create and array of Media Type*/
+      //Use regex to find everything between "Ads_MediaType_S" and "Ads_MediaType_E"
+      let processing_MediaType_S = raw_text.match(/Ads_MediaType_S (.*?) Ads_MediaType_E/g);
+      //Initiating the variable outside the if block
+      let MediaTypes;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_MediaType_S) {
+        // Capitalize to use the matches properly and trim spaces
+        MediaTypes = processing_MediaType_S.map(processing_MediaType_S => processing_MediaType_S.replace(/Ads_MediaType_S | Ads_MediaType_E/g, '').trim());
+      }
+
+
+
+      
       /*Create and array of Image Url*/
       //Use regex to find everything between "Ads_Img_S" and "Ads_Img_E"
       let processing_Img_S = raw_text.match(/Ads_Img_S (.*?) Ads_Img_E/g);
@@ -1558,8 +1599,18 @@ ${GradeOption}
         Imgs = processing_Img_S.map(processing_Img_S => processing_Img_S.replace(/Ads_Img_S | Ads_Img_E/g, '').trim());
       }
 
+  /*Create and array of Videos Url*/
+      //Use regex to find everything between "Ads_Vid_S" and "Ads_Vid_E"
+      let processing_Vid_S = raw_text.match(/Ads_Vid_S (.*?) Ads_Vid_E/g);
+      //Initiating the variable outside the if block
+      let Vids;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_Vid_S) {
+        // Capitalize to use the matches properly and trim spaces
+        Vids = processing_Vid_S.map(processing_Vid_S => processing_Vid_S.replace(/Ads_Vid_S | Ads_Vid_E/g, '').trim());
+      }
 
-      /*Create and array of Owner' Url*/
+      /*Create and array of Owner's Url*/
       //Use regex to find everything between "Ads_Url_S" and "Ads_Url_E"
       let processing_Url_S = raw_text.match(/Ads_Url_S (.*?) Ads_Url_E/g);
       let Urls;
@@ -1589,19 +1640,45 @@ ${GradeOption}
         Owners = processing_Owner_S.map(processing_Owner_S => processing_Owner_S.replace(/Ads_Owner_S | Ads_Owner_E/g, '').trim());
       }
 
-      //Create our tips array
-      let adsTips = []
-      for (let i = 0; i < Owners.length; i++) {
-        adsTips.push({
-          Img: Imgs[i],
-          Url: Urls[i],
-          Alt: Alts[i],
-          Owner: Owners[i]
-        });
+    /*Create and array of Ads Categories*/
+      //Use regex to find everything between "Ads_Category_S" and "Ads_Category_E" 
+      let processing_Category_S = raw_text.match(/Ads_Category_S (.*?) Ads_Category_E/g);
+      let Categorys;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_Category_S) {
+        // Capitalize to use the matches properly and trim spaces
+        Categorys = processing_Category_S.map(processing_Category_S => processing_Category_S.replace(/Ads_Category_S | Ads_Category_E/g, '').trim());
       }
 
+
+    /*Create and array of Ads Owner name*/
+      //Use regex to find everything between "Ads_SubCategory_S" and "Ads_SubCategory_E"
+      let processing_SubCategory_S = raw_text.match(/Ads_SubCategory_S (.*?) Ads_SubCategory_E/g);
+      let SubCategorys;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_SubCategory_S) {
+        // Capitalize to use the matches properly and trim spaces
+        SubCategorys = processing_SubCategory_S.map(processing_SubCategory_S => processing_SubCategory_S.replace(/Ads_SubCategory_S | Ads_SubCategory_E/g, '').trim());
+      }
+
+      //Create our tips array
+      let adsArray = []
+      for (let i = 0; i < Owners.length; i++) {
+        adsArray.push({
+          MediaType:MediaTypes[i],
+          Img: Imgs[i],
+          Vid:Vids[i],
+          Url: Urls[i],
+          Alt: Alts[i],
+          Owner: Owners[i],
+          Category: Categorys[i],
+          SubCategory: SubCategorys[i]
+       });
+      };
+
+
       //Store it locally
-      localStorage.setItem('NewAds', JSON.stringify(adsTips));
+      localStorage.setItem('NewAds', JSON.stringify(adsArray));
     }
 
     //function to display Ads
@@ -1612,29 +1689,61 @@ ${GradeOption}
       if (Ads) {
         Ads = JSON.parse(Ads);
         //get a Random tips
-        let current_Ad1 = getRandomItem(Ads)
-        let current_Ad2 = getRandomItem(Ads);
-        //displayAds
-        let GPA_Ads = Id('GPA_Ads');
-        let CGPA_Ads = Id('CGPA_Ads');
+        let current_Ad1 = getRandomItem(Ads);
+        let current_Ad2 = current_Ad1;
 
-        CGPA_Ads.src = current_Ad1.Img;
+        //Where to display ads
+        let GPA_Ads_Container = Id('GPA_Ads_Container');
+        let CGPA_Ads_Container = Id('CGPA_Ads_Container');
+
+        let CGPA_Ads = document.createElement(current_Ad1.MediaType);
+        CGPA_Ads_Container.innerHTML = '';
+        CGPA_Ads.id = "CGPA_Ads";
+        CGPA_Ads.className = "ads";
+        
+        console.log(current_Ad1.MediaType);
+        if(current_Ad1.MediaType==='img'){
+          CGPA_Ads.src = current_Ad1.Img;
+        }else{
+          CGPA_Ads.setAttribute('src', current_Ad1.Vid);
+          CGPA_Ads.setAttribute('frameborder', '0');
+          CGPA_Ads.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+          CGPA_Ads.setAttribute('allowfullscreen', 'allowfullscreen');
+          CGPA_Ads.setAttribute('alt', 'allowfullscreen');
+        }
+        
         CGPA_Ads.alt = current_Ad1.Alt;
         // Set the onclick property
         CGPA_Ads.onclick = function() {
-          app.OpenUrl(current_Ad1.Url);
+          app.OpenUrl(current_Ad.Url);
         };
-        CGPA_Ads.animation = " ";
-        CGPA_Ads.animation = "slideTo 1s";
+        CGPA_Ads_Container.appendChild(CGPA_Ads);
+
+        
         //Gpa ads are different.
-        GPA_Ads.src = current_Ad2.Img;
+        let GPA_Ads = document.createElement(current_Ad2.MediaType);
+        GPA_Ads_Container.innerHTML='';
+        GPA_Ads.id = "GPA_Ads";
+        GPA_Ads.className = "ads";
+        console.log(current_Ad2.MediaType);
+        if(current_Ad2.MediaType==='img'){
+          GPA_Ads.src = current_Ad2.Img;
+        }else{
+          GPA_Ads.setAttribute('src', current_Ad2.Vid);
+          GPA_Ads.setAttribute('frameborder', '0');
+          GPA_Ads.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+          GPA_Ads.setAttribute('allowfullscreen', 'allowfullscreen');
+          GPA_Ads.setAttribute('alt', 'allowfullscreen');
+        }
+        
         GPA_Ads.alt = current_Ad2.Alt;
         // Set the onclick property
         GPA_Ads.onclick = function() {
           app.OpenUrl(current_Ad2.Url);
         };
-        GPA_Ads.animation = " ";
-        GPA_Ads.animation = "slideTo 1s";
+        GPA_Ads_Container.appendChild(GPA_Ads);
+
+        
       } else {
         //No stored
         arrayAds(In_Built_Ads);

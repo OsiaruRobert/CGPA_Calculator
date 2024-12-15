@@ -32,3 +32,5 @@ document.getElementById("exitTips").addEventListener('click', () => {
     p.style.display = "none";
   })
 });
+
+
