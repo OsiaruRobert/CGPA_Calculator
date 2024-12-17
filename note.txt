@@ -1,6 +1,0 @@
-Ads
-  Make the ads multimedia 
-  And different duration of show
-
-My Control 
-  Add special announcement 

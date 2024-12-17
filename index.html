@@ -19,7 +19,7 @@
   <script src="ds:/Sys/app.js"></script>
 
   <script>
-  // cfg.Portrait;
+    cfg.Portrait;
 
     function OnStart() {
       app.Animate(ShowRotation, 2);
@@ -119,9 +119,9 @@
             <input max="2" type="number" placeholder=" 1 - 100" id="numberOfCourse" />
           </div>
 
-<div id="GPA_Ads_Container">
-</div>   
-</div>
+          <div id="GPA_Ads_Container">
+          </div>
+        </div>
 
 
         <div id="Calculator" class="Calculator">
@@ -155,16 +155,16 @@
             <b>Current Year</b>
             <input max="2" type="number" placeholder=" 1 - 10" id="CurrentLevel" />
           </div>
-          
-<div id="CGPA_Ads_Container">
-</div>
+
+          <div id="CGPA_Ads_Container">
+          </div>
         </section>
 
 
 
         <div id="CCGPA_Container">
           <img id="CGPA_back" class="To_CI" src=" Img/X.png" alt="Back" />
-          
+
           <section id="CGPA_Container"></section>
         </div>
 
@@ -459,7 +459,7 @@
   <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
-  //  app.EnableBackKey(false);
+    app.EnableBackKey(false);
 
     let OnBack = () => {
       app.Exit();
@@ -520,7 +520,7 @@
             exit_Aux();
             From_AuxPage();
           };
-          
+
           setTimeout(function() {
             specificStyle(window[prefix + "Page"], "display", "block");
           }, 350);
@@ -619,9 +619,6 @@
         From_AuxPage();
       })
     })
-
-
-
 
 
     //Order the numbering
@@ -1475,24 +1472,21 @@ ${GradeOption}
 
     //Ads in buult
     let In_Built_Ads = `
-  Ads_MediaType_S iframe Ads_MediaType_E
+  Ads_MediaType_S img Ads_MediaType_E
   Ads_Img_S Img/adsTest.jpg Ads_Img_E
-  Ads_Vid_S Img/Ads.mp4 Ads_Vid_E
-  Ads_ShowTime_S 1000 Ads_ShowTime_E
+  Ads_ShowTime_S 5000 Ads_ShowTime_E
   Ads_Url_S https://1.wordpress.com Ads_Url_E
-  Ads_Alt_S Online With Beta Ads_Alt_E
+  Ads_Alt_S Online With Beta gives you monthly data at very affordable prices Ads_Alt_E
   Ads_Category_S Education Ads_Category_E
   Ads_SubCategory_S Toturial Ads_SubCategory_E
   Ads_Owner_S Owner1 Ads_Owner_E
  
- 
   Ads_MediaType_S img Ads_MediaType_E
-  Ads_Img_S Img/adsTest.jpg Ads_Img_E
-  Ads_Vid_S Img/Ads.mp4 Ads_Vid_E
-  Ads_ShowTime_S 1000 Ads_ShowTime_E
+  Ads_Img_S Img/adTest.jpg Ads_Img_E
+  Ads_ShowTime_S 5000 Ads_ShowTime_E
   Ads_Url_S https://1.wordpress.com Ads_Url_E
   Ads_Alt_S Online With Beta Ads_Alt_E
-  Ads_Category_S Education Ads_Category_E
+  Ads_Category_S Love Ads_Category_E
   Ads_SubCategory_S Toturial Ads_SubCategory_E
   Ads_Owner_S Owner1 Ads_Owner_E
   `;
@@ -1523,8 +1517,7 @@ ${GradeOption}
 
       function handleReply(error, reply) {
         if (error) {
-          console.log('Fetching in failed...')
-          app.ShowPopup('Network Error  :  ' + reply);
+          app.ShowPopup('Failed to connect to server');
         } else {
           console.log('Fetching in progress...');
           // Extract data between the specified markers
@@ -1553,28 +1546,33 @@ ${GradeOption}
           //Version control
           let If_Message = raw_Ads.slice(raw_Ads.indexOf("Start_Of_If_Message") + 19, raw_Ads.indexOf("End_Of_If_Message"));
 
-         let MyMessage = raw_Ads.slice(raw_Ads.indexOf("Start_Of_Message") + 16, raw_Ads.indexOf("End_Of_Message"));
+          let MyMessage = raw_Ads.slice(raw_Ads.indexOf("Start_Of_Message") + 16, raw_Ads.indexOf("End_Of_Message"));
 
 
           //Check for message.
           if (If_Message) {
             myAlertWork(MyMessage)
           }
-          
-          console.log('Fetching in completed')
+
+          console.log('Successfully to connect to server');
+          app.ShowPopup('Successfully to connect to server');
+
         }
       }
     }
 
     //get Random Item
     function getRandomItem(arr) {
+      console.log(Math.random());
       let randomIndex = Math.floor(Math.random() * arr.length);
+      console.log(randomIndex);
+
       return arr[randomIndex];
     }
 
     //Arrange the Ads and store them locally
     function arrayAds(raw_text) {
-    /*Create and array of Media Type*/
+      /*Create and array of Media Type*/
       //Use regex to find everything between "Ads_MediaType_S" and "Ads_MediaType_E"
       let processing_MediaType_S = raw_text.match(/Ads_MediaType_S (.*?) Ads_MediaType_E/g);
       //Initiating the variable outside the if block
@@ -1585,9 +1583,6 @@ ${GradeOption}
         MediaTypes = processing_MediaType_S.map(processing_MediaType_S => processing_MediaType_S.replace(/Ads_MediaType_S | Ads_MediaType_E/g, '').trim());
       }
 
-
-
-      
       /*Create and array of Image Url*/
       //Use regex to find everything between "Ads_Img_S" and "Ads_Img_E"
       let processing_Img_S = raw_text.match(/Ads_Img_S (.*?) Ads_Img_E/g);
@@ -1597,17 +1592,6 @@ ${GradeOption}
       if (processing_Img_S) {
         // Capitalize to use the matches properly and trim spaces
         Imgs = processing_Img_S.map(processing_Img_S => processing_Img_S.replace(/Ads_Img_S | Ads_Img_E/g, '').trim());
-      }
-
-  /*Create and array of Videos Url*/
-      //Use regex to find everything between "Ads_Vid_S" and "Ads_Vid_E"
-      let processing_Vid_S = raw_text.match(/Ads_Vid_S (.*?) Ads_Vid_E/g);
-      //Initiating the variable outside the if block
-      let Vids;
-      // Extract the matched results and remove unnecessary parts
-      if (processing_Vid_S) {
-        // Capitalize to use the matches properly and trim spaces
-        Vids = processing_Vid_S.map(processing_Vid_S => processing_Vid_S.replace(/Ads_Vid_S | Ads_Vid_E/g, '').trim());
       }
 
       /*Create and array of Owner's Url*/
@@ -1620,7 +1604,6 @@ ${GradeOption}
         Urls = processing_Url_S.map(processing_Url_S => processing_Url_S.replace(/Ads_Url_S | Ads_Url_E/g, '').trim());
       }
 
-
       /*Create and array of Ads alt*/
       //Use regex to find everything between "Ads_Alt_S" and "Ads_Alt_E"
       let processing_Arl_S = raw_text.match(/Ads_Alt_S (.*?) Ads_Alt_E/g);
@@ -1630,6 +1613,7 @@ ${GradeOption}
         // Capitalize to use the matches properly and trim spaces
         Alts = processing_Arl_S.map(processing_Arl_S => processing_Arl_S.replace(/Ads_Alt_S | Ads_Alt_E/g, '').trim());
       }
+
       /*Create and array of Ads Owner name*/
       //Use regex to find everything between "Ads_Owner_S" and "Ads_Owner_E"
       let processing_Owner_S = raw_text.match(/Ads_Owner_S (.*?) Ads_Owner_E/g);
@@ -1640,7 +1624,18 @@ ${GradeOption}
         Owners = processing_Owner_S.map(processing_Owner_S => processing_Owner_S.replace(/Ads_Owner_S | Ads_Owner_E/g, '').trim());
       }
 
-    /*Create and array of Ads Categories*/
+
+      /*Create and array of Ads ShowTime name*/
+      //Use regex to find everything between "Ads_ShowTime_S" and "Ads_ShowTime_E"
+      let processing_ShowTime_S = raw_text.match(/Ads_ShowTime_S (.*?) Ads_ShowTime_E/g);
+      let ShowTimes;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_ShowTime_S) {
+        // Capitalize to use the matches properly and trim spaces
+        ShowTimes = processing_ShowTime_S.map(processing_ShowTime_S => processing_ShowTime_S.replace(/Ads_ShowTime_S | Ads_ShowTime_E/g, '').trim());
+      }
+
+      /*Create and array of Ads Categories*/
       //Use regex to find everything between "Ads_Category_S" and "Ads_Category_E" 
       let processing_Category_S = raw_text.match(/Ads_Category_S (.*?) Ads_Category_E/g);
       let Categorys;
@@ -1650,8 +1645,7 @@ ${GradeOption}
         Categorys = processing_Category_S.map(processing_Category_S => processing_Category_S.replace(/Ads_Category_S | Ads_Category_E/g, '').trim());
       }
 
-
-    /*Create and array of Ads Owner name*/
+      /*Create and array of Ads Owner name*/
       //Use regex to find everything between "Ads_SubCategory_S" and "Ads_SubCategory_E"
       let processing_SubCategory_S = raw_text.match(/Ads_SubCategory_S (.*?) Ads_SubCategory_E/g);
       let SubCategorys;
@@ -1665,15 +1659,15 @@ ${GradeOption}
       let adsArray = []
       for (let i = 0; i < Owners.length; i++) {
         adsArray.push({
-          MediaType:MediaTypes[i],
+          MediaType: MediaTypes[i],
           Img: Imgs[i],
-          Vid:Vids[i],
           Url: Urls[i],
           Alt: Alts[i],
+          ShowTime: ShowTimes[i],
           Owner: Owners[i],
           Category: Categorys[i],
           SubCategory: SubCategorys[i]
-       });
+        });
       };
 
 
@@ -1687,63 +1681,118 @@ ${GradeOption}
       let Ads = localStorage.getItem("NewAds");
 
       if (Ads) {
+        //Where to display ads
+        let GPA_Ads_Container = Id('GPA_Ads_Container');
+        let CGPA_Ads_Container = Id('CGPA_Ads_Container');
+
+        //Update liked ads array 
+        function update_feed(Current_Ad) {
+          //Object of liked ad
+          let liked_Ads = {
+            Category: Current_Ad.Category,
+            SubCategory: Current_Ad.SubCategory
+          };
+          console.log(liked_Ads);
+          let Interested_Ads = [];
+
+          if (localStorage.getItem('Interested_Ads')) {
+            Interested_Ads = localStorage.getItem('Interested_Ads');
+            Interested_Ads = JSON.parse(Interested_Ads);
+          }
+          //Check if the liked ad is already saved
+          let Is_Interested_Ad = false;
+          for (let i = 0; i < Interested_Ads.length; i++) {
+            if (Interested_Ads[i].Category === liked_Ads.Category && Interested_Ads[i].SubCategory === liked_Ads.SubCategory) {
+              Is_Interested_Ad = true;
+            }
+          }
+          //If its not saved add it and save it.
+          if (!Is_Interested_Ad) {
+            Interested_Ads.push(liked_Ads);
+            console.log('liked_Ads added');
+          } else {
+            console.log('liked_Ads found');
+          }
+          localStorage.setItem("Interested_Ads", JSON.stringify(Interested_Ads));
+        }
+        //Set the ads
         Ads = JSON.parse(Ads);
         //get a Random tips
         let current_Ad1 = getRandomItem(Ads);
         let current_Ad2 = current_Ad1;
 
-        //Where to display ads
-        let GPA_Ads_Container = Id('GPA_Ads_Container');
-        let CGPA_Ads_Container = Id('CGPA_Ads_Container');
+
+        function ARads() {
+          if (localStorage.getItem('Interested_Ads')) {
+            let Interested_Ads = localStorage.getItem('Interested_Ads');
+            Interested_Ads = JSON.parse(Interested_Ads);
+            //Check if the ads is interesting to user.
+            let Is_Interested_Ad = false;
+            for (let i = 0; i < Interested_Ads.length; i++) {
+              if (Interested_Ads[i].Category === current_Ad1.Category && Interested_Ads[i].SubCategory === current_Ad1.SubCategory) {
+                Is_Interested_Ad = true;
+              }
+            }
+            if (!Is_Interested_Ad) {
+              console.log(current_Ad1);
+
+              console.log('Not interesting ads');
+              console.log(current_Ad1);
+              current_Ad1 = getRandomItem(Ads);
+              current_Ad2 = current_Ad1;
+            } else {
+              console.log('Showing   interesting ads');
+            }
+          }
+        }
+
+        ARads();
+        ARads();
 
         let CGPA_Ads = document.createElement(current_Ad1.MediaType);
         CGPA_Ads_Container.innerHTML = '';
         CGPA_Ads.id = "CGPA_Ads";
         CGPA_Ads.className = "ads";
-        
-        console.log(current_Ad1.MediaType);
-        if(current_Ad1.MediaType==='img'){
-          CGPA_Ads.src = current_Ad1.Img;
-        }else{
-          CGPA_Ads.setAttribute('src', current_Ad1.Vid);
-          CGPA_Ads.setAttribute('frameborder', '0');
-          CGPA_Ads.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-          CGPA_Ads.setAttribute('allowfullscreen', 'allowfullscreen');
-          CGPA_Ads.setAttribute('alt', 'allowfullscreen');
-        }
-        
+        CGPA_Ads.src = current_Ad1.Img;
         CGPA_Ads.alt = current_Ad1.Alt;
         // Set the onclick property
         CGPA_Ads.onclick = function() {
-          app.OpenUrl(current_Ad.Url);
+          try {
+            app.OpenUrl(current_Ad2.Url);
+          } catch (e) {
+            console.warn(e);
+          }
+          update_feed(current_Ad2);
+
         };
+
         CGPA_Ads_Container.appendChild(CGPA_Ads);
 
-        
+
         //Gpa ads are different.
         let GPA_Ads = document.createElement(current_Ad2.MediaType);
-        GPA_Ads_Container.innerHTML='';
+        GPA_Ads_Container.innerHTML = '';
         GPA_Ads.id = "GPA_Ads";
         GPA_Ads.className = "ads";
-        console.log(current_Ad2.MediaType);
-        if(current_Ad2.MediaType==='img'){
-          GPA_Ads.src = current_Ad2.Img;
-        }else{
-          GPA_Ads.setAttribute('src', current_Ad2.Vid);
-          GPA_Ads.setAttribute('frameborder', '0');
-          GPA_Ads.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-          GPA_Ads.setAttribute('allowfullscreen', 'allowfullscreen');
-          GPA_Ads.setAttribute('alt', 'allowfullscreen');
-        }
-        
+        GPA_Ads.src = current_Ad2.Img;
         GPA_Ads.alt = current_Ad2.Alt;
         // Set the onclick property
         GPA_Ads.onclick = function() {
-          app.OpenUrl(current_Ad2.Url);
+          try {
+            app.OpenUrl(current_Ad2.Url);
+          } catch (e) {
+            console.warn(e);
+          }
+          update_feed(current_Ad2);
+
         };
         GPA_Ads_Container.appendChild(GPA_Ads);
 
-        
+        //Run again after specified time.
+        setTimeout(function() {
+          displayAds();
+        }, current_Ad2.ShowTime);
+
       } else {
         //No stored
         arrayAds(In_Built_Ads);
@@ -1751,7 +1800,6 @@ ${GradeOption}
       }
     }
     displayAds();
-    setInterval(displayAds, 10000);
   </script>
 
   <script src="Html/timetable.js"></script>
