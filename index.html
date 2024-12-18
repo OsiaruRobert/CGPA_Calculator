@@ -541,6 +541,8 @@
       SeeOrHide("GPA_Ads", "block");
       SeeOrHide("Calculator", "none")
       SeeOrHide("GPA_interface", "grid");
+      specificStyle(sideNav, "right", "-50vw");
+
       myscrollUp();
       OnBack = () => {
         from_Calculator_to_Hone();
@@ -559,6 +561,8 @@
         "grid");
       SeeOrHide("CGPA_Ads",
         "block");
+      specificStyle(sideNav, "right", "-50vw");
+
       myscrollUp();
       OnBack = () => {
         from_Calculator_to_Hone();
@@ -576,6 +580,8 @@
         "none");
       SeeOrHide("startPage",
         "block");
+      specificStyle(sideNav, "right", "-50vw");
+
       myscrollUp();
       //Can Exit app..
       OnBack = () => {
@@ -603,7 +609,6 @@
           from_Calculator_to_GPA_interface();
         };
       } else {
-        console.log('at home');
       }
     }
 
@@ -1563,10 +1568,7 @@ ${GradeOption}
 
     //get Random Item
     function getRandomItem(arr) {
-      console.log(Math.random());
       let randomIndex = Math.floor(Math.random() * arr.length);
-      console.log(randomIndex);
-
       return arr[randomIndex];
     }
 
@@ -1707,11 +1709,12 @@ ${GradeOption}
             }
           }
           //If its not saved add it and save it.
-          if (!Is_Interested_Ad) {
+          if (Is_Interested_Ad) {
+                        console.log('liked_Ads found');
+
+          } else {
             Interested_Ads.push(liked_Ads);
             console.log('liked_Ads added');
-          } else {
-            console.log('liked_Ads found');
           }
           localStorage.setItem("Interested_Ads", JSON.stringify(Interested_Ads));
         }
@@ -1722,32 +1725,54 @@ ${GradeOption}
         let current_Ad2 = current_Ad1;
 
 
-        function ARads() {
+        function FilterCategory() {
           if (localStorage.getItem('Interested_Ads')) {
             let Interested_Ads = localStorage.getItem('Interested_Ads');
+
             Interested_Ads = JSON.parse(Interested_Ads);
             //Check if the ads is interesting to user.
             let Is_Interested_Ad = false;
             for (let i = 0; i < Interested_Ads.length; i++) {
-              if (Interested_Ads[i].Category === current_Ad1.Category && Interested_Ads[i].SubCategory === current_Ad1.SubCategory) {
+              if (Interested_Ads[i].Category === current_Ad1.Category) {
                 Is_Interested_Ad = true;
               }
             }
-            if (!Is_Interested_Ad) {
-              console.log(current_Ad1);
-
+            if (Is_Interested_Ad) {
+              console.log('Showing   interesting ads');
+            } else {
               console.log('Not interesting ads');
-              console.log(current_Ad1);
               current_Ad1 = getRandomItem(Ads);
               current_Ad2 = current_Ad1;
-            } else {
-              console.log('Showing   interesting ads');
             }
           }
         }
 
-        ARads();
-        ARads();
+        function FilterSubCategory() {
+          if (localStorage.getItem('Interested_Ads')) {
+            
+            let Interested_Ads = localStorage.getItem('Interested_Ads');
+            Interested_Ads = JSON.parse(Interested_Ads);
+            
+            //Check if the ads is interesting to user.
+            let Is_Interested_Ad = false;
+            for (let i = 0; i < Interested_Ads.length; i++) {
+              if (Interested_Ads[i].SubCategory === current_Ad1.SubCategory && Interested_Ads[i].Category === current_Ad1.Category) {
+                Is_Interested_Ad = true;
+              }
+            }
+            if (Is_Interested_Ad) {
+                console.log('Showing   interesting ads');
+            } else {
+              console.log('Not interesting ads changing it');
+              current_Ad1 = getRandomItem(Ads);
+              current_Ad2 = current_Ad1;
+            }
+          }
+        }
+
+        FilterCategory();
+        FilterCategory();
+        FilterSubCategory();
 
         let CGPA_Ads = document.createElement(current_Ad1.MediaType);
         CGPA_Ads_Container.innerHTML = '';
@@ -1763,9 +1788,7 @@ ${GradeOption}
             console.warn(e);
           }
           update_feed(current_Ad2);
-
         };
-
         CGPA_Ads_Container.appendChild(CGPA_Ads);
 
 
@@ -1787,11 +1810,8 @@ ${GradeOption}
 
         };
         GPA_Ads_Container.appendChild(GPA_Ads);
-
         //Run again after specified time.
-        setTimeout(function() {
-          displayAds();
-        }, current_Ad2.ShowTime);
+setTimeout(displayAds, Number(current_Ad1.ShowTime));
 
       } else {
         //No stored
