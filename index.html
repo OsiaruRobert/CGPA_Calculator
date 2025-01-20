@@ -19,7 +19,7 @@
   <script src="ds:/Sys/app.js"></script>
 
   <script>
-    cfg.Portrait;
+//    cfg.Portrait;
 
     function OnStart() {
       app.Animate(ShowRotation, 2);
@@ -443,14 +443,16 @@
       <button id="alertOk" type="button">OK, Thanks</button>
     </div>
   </div>
+  <div id="Update_container">
+    <div class="Update" id="Update">
+      <span id="x">x</span>
+      <h2>Please update the app</h2>
 
-  <div class="Update" id="Update">
-    <span id="x">x</span>
-    <h2>Please update the app</h2>
+      <a id="Update_link">
+        Update
+      </a>
+    </div>
 
-    <a id="Update_link">
-      Update
-    </a>
   </div>
 
 
@@ -459,7 +461,7 @@
   <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
-    app.EnableBackKey(false);
+    // app.EnableBackKey(false);
 
     let OnBack = () => {
       app.Exit();
@@ -608,8 +610,7 @@
         OnBack = () => {
           from_Calculator_to_GPA_interface();
         };
-      } else {
-      }
+      } else {}
     }
 
     function exit_Aux() {
@@ -1474,6 +1475,10 @@ ${GradeOption}
       app.SendText("I absolutely love using this app for calculating my CGPA and GPA! It’s incredibly fast, intuitive, and makes the entire process effortless. If you want an easy way to keep track of your academic performance, I highly recommend you give it a try: https://www.amazon.com/gp/mas/dl/android?p=com.osiaru.cgpa", "Share app", "Choose an app");
     });
     let link;
+    Id("x").addEventListener("click", () => {
+      Id("Update_container").style = 'display:none';
+    });
+
 
     //Ads in buult
     let In_Built_Ads = `
@@ -1541,11 +1546,8 @@ ${GradeOption}
 
           //Validate
           if (1 < latestVersion) {
-            Id("Update").style.display = "block";
+            Id("Update_container").style.display = "block";
             Id("Update_link").href = link;
-            Id("x").addEventListener("click", () => {
-              Id("Update").style = 'display:none';
-            });
           }
 
           //Version control
@@ -1710,7 +1712,7 @@ ${GradeOption}
           }
           //If its not saved add it and save it.
           if (Is_Interested_Ad) {
-                        console.log('liked_Ads found');
+            console.log('liked_Ads found');
 
           } else {
             Interested_Ads.push(liked_Ads);
@@ -1749,10 +1751,10 @@ ${GradeOption}
 
         function FilterSubCategory() {
           if (localStorage.getItem('Interested_Ads')) {
-            
+
             let Interested_Ads = localStorage.getItem('Interested_Ads');
             Interested_Ads = JSON.parse(Interested_Ads);
-            
+
             //Check if the ads is interesting to user.
             let Is_Interested_Ad = false;
             for (let i = 0; i < Interested_Ads.length; i++) {
@@ -1761,7 +1763,7 @@ ${GradeOption}
               }
             }
             if (Is_Interested_Ad) {
-                console.log('Showing   interesting ads');
+              console.log('Showing   interesting ads');
             } else {
               console.log('Not interesting ads changing it');
               current_Ad1 = getRandomItem(Ads);
@@ -1811,7 +1813,7 @@ ${GradeOption}
         };
         GPA_Ads_Container.appendChild(GPA_Ads);
         //Run again after specified time.
-setTimeout(displayAds, Number(current_Ad1.ShowTime));
+        setTimeout(displayAds, Number(current_Ad1.ShowTime));
 
       } else {
         //No stored

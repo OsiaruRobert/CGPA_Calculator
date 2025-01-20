@@ -518,6 +518,7 @@ input:checked+.slider .theme-icon {
 .Update {
   position: fixed;
   top: 70vh;
+  z-index: 3;
   height: 30vh;
   background: #00C8FF;
   color: #fff;
@@ -525,7 +526,6 @@ input:checked+.slider .theme-icon {
   margin: 0px;
   padding: 6vw;
   border-radius: 4vh;
-  display: none;
 }
 
 .Update h2 {
@@ -534,19 +534,39 @@ input:checked+.slider .theme-icon {
 
 .Update a {
   margin: 5vh 5vh 5vh 60vw;
+  padding: 3.3vh 1vh;
   height: 9vh;
   width: 10vh;
   border-radius: 2vh;
   font-weight: 600;
-  font-size: 4.3vw;
+  font-size: 2.3vh;
   color: #fff;
   background: var(--pri);
-  display: block;
+    display: block;
+
+}
+
+ #Update_container {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fffe;
+  z-index: 1;
+  display: none;
+
+
+}
+.dark  #Update_container {
+    background-color: #000e;
+
 }
 
 #x {
   margin: 1vh 10vw 5vw 85vw;
-  font-size: 8vw;
+  font-size: 9vw;
   color: red;
 }
 
