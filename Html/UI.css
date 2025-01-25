@@ -97,7 +97,10 @@
   width: 5vh;
   display: none;
 }
-
+.toAd{
+  font-size: 4vw;
+  color: #80FA91;
+}
 .AuxPage {
   position: fixed;
   top: 0;

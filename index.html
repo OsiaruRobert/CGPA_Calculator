@@ -998,8 +998,12 @@ ${GradeOption}
             <div>Grade</div>
             </div>
             </section>
-            <button class="Add_Row">+</button>
-            <button class="Done">✓</button>`;
+            
+            <div class="CGPA_Control_i">
+                 <button class="Add_Row">+</button>
+            <button class="Done">✓</button>
+            </div>
+         `;
           //Create Results Table
           for (let row = 1; row < NOC; row++) {
             Id(`Y${y}S${s}Results_Table`).innerHTML += `<div class="tableRow">${universalRowContent}</div>`;
