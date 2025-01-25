@@ -19,7 +19,7 @@
   <script src="ds:/Sys/app.js"></script>
 
   <script>
-   cfg.Portrait;
+    //cfg.Portrait;
 
     function OnStart() {
       app.Animate(ShowRotation, 2);
@@ -118,9 +118,11 @@
             <b>Number Of Courses:</b>
             <input max="2" type="number" placeholder=" 1 - 100" id="numberOfCourse" />
           </div>
+          <p class="toAd">Contact 09064498317 to display your ad.</p>
 
           <div id="GPA_Ads_Container">
           </div>
+
         </div>
 
 
@@ -155,6 +157,7 @@
             <b>Current Year</b>
             <input max="2" type="number" placeholder=" 1 - 10" id="CurrentLevel" />
           </div>
+          <p class="toAd">Contact 09064498317 to display your ad.</p>
 
           <div id="CGPA_Ads_Container">
           </div>
@@ -223,6 +226,8 @@
         <b>Phone : </b> <span class="toMe" id="myNumber">+2349064498317</span><br /><br />
 
         <b>Email : </b> <span class="toMe" id="myEmail">believerobert3@gmail.com</span><br /><br />
+        <p class="toAd">Contact 09064498317 to display your ad.</p>
+
       </div>
     </section>
 
@@ -461,7 +466,7 @@
   <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
-     app.EnableBackKey(false);
+   // app.EnableBackKey(false);
 
     let OnBack = () => {
       app.Exit();
@@ -1236,8 +1241,8 @@ ${GradeOption}
     Current_Level.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         if (CurrentLevel.value < 1 || CurrentLevel.value > 10) {
-          myAlertWork(` The levels have you done must be above zero (0) and below 10. <br/>
-                Please Enter the Number of courses you did!`);
+          myAlertWork(` Your current year must be above zero (0) and below 10. <br/>
+                Please Enter your current year!`);
         } else {
           yourlevel = Current_Level.value;
           CreateInterface();
@@ -1542,12 +1547,20 @@ ${GradeOption}
           let latestVersion = raw_Ads.slice(raw_Ads.indexOf("Start_Of_latestVersion") + 22, raw_Ads.indexOf("End_Of_latestVersion"));
 
           link = raw_Ads.slice(raw_Ads.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
+          let meLink = raw_Ads.slice(raw_Ads.indexOf("Start_Of_melink") + 15, raw_Ads.indexOf("End_Of_melink"));
+console.log(meLink);
+          localStorage.setItem("mylink", JSON.stringify(meLink));
 
 
           //Validate
           if (1 < latestVersion) {
             Id("Update_container").style.display = "block";
-            Id("Update_link").href = link;
+            localStorage.setItem("link", JSON.stringify(link));
+            link = JSON.parse(localStorage.getItem("link"));
+
+            Id("Update_link").addEventListener('click', () => {
+              app.OpenUrl(link);
+            });;
           }
 
           //Version control
@@ -1822,6 +1835,17 @@ ${GradeOption}
       }
     }
     displayAds();
+
+    let toAd = document.querySelectorAll('.toAd');
+    toAd.forEach((elem) => {
+      elem.addEventListener('click', () => {
+        if(JSON.parse(localStorage.getItem("mylink"))){
+                  app.OpenUrl(JSON.parse(localStorage.getItem("mylink")));
+        }else{
+          app.OpenUrl('https://wa.me/9064498317?text=Hi%20there%20I%20would%20like%20to%20advertise%20my%20business/product...');
+        }
+      })
+    })
   </script>
 
   <script src="Html/timetable.js"></script>
