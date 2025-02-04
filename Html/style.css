@@ -129,10 +129,12 @@ input {
 
 .Year_Container .Results_Table {
   position: relative;
+  top:-4vh;
   right: 4vw;
   z-index: 0;
   width: 85vw;
-  margin: 4vw auto auto auto;
+margin: 0px auto auto auto;
+  
 }
 
 #CGPA_Container .TableContainers::before {
@@ -203,7 +205,6 @@ input {
 .noResult {
   color: #FF1600;
   font-size: 1.4vh;
-  display :none;
 }
 
 .Course_Title {
@@ -250,18 +251,19 @@ input {
   background-color: var(--sec);
   color: #fff;
   margin: 0px;
-  margin-left: 5vw;
+  margin-left: 1vw;
   font-size: 4vh;
   text-align: center;
   font-weight: 600;
   position: relative;
-  left: -3vw;
+    bottom: 5.3vh;
+  left: 1vw;
   z-index: 1;
 }
 
 .Done {
   position: relative;
-  bottom: 9.3vh;
+  bottom: 14.3vh;
   width: 9vh;
   height: 9vh;
   font-size: 4vh;
@@ -336,7 +338,7 @@ input {
   margin: 0.2rem auto;
 }
 .CGPA_Control_i{
-  margin-bottom: 15vh;
+  margin-bottom: 17vh;
 }
 
 @keyframes smaller {
