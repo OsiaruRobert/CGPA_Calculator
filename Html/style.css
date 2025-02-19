@@ -122,19 +122,18 @@ input {
 }
 
 .Year_Container .TableContainers {
-  padding: 0px;
+  height: 140vh;
   position: absolute;
   top: 10%;
 }
 
 .Year_Container .Results_Table {
+  width: 85vw;
   position: relative;
-  top:-4vh;
+  top: -4vh;
   right: 4vw;
   z-index: 0;
-  width: 85vw;
-margin: 0px auto auto auto;
-  
+  margin: auto;
 }
 
 #CGPA_Container .TableContainers::before {
@@ -179,7 +178,6 @@ margin: 0px auto auto auto;
 
 .headRow .Credit_Unit {
   overflow-wrap: break-word;
-
 }
 
 .tableRow,
@@ -256,7 +254,7 @@ margin: 0px auto auto auto;
   text-align: center;
   font-weight: 600;
   position: relative;
-    bottom: 5.3vh;
+  bottom: 5.3vh;
   left: 1vw;
   z-index: 1;
 }
@@ -337,7 +335,8 @@ margin: 0px auto auto auto;
 #addYear {
   margin: 0.2rem auto;
 }
-.CGPA_Control_i{
+
+.CGPA_Control_i {
   margin-bottom: 17vh;
 }
 
@@ -345,7 +344,7 @@ margin: 0px auto auto auto;
   0% {
     scale: 1;
   }
-
+  
   100% {
     scale: -0.00000001;
   }
@@ -355,11 +354,11 @@ margin: 0px auto auto auto;
   0% {
     scale: 0;
   }
-
+  
   98% {
     scale: 1.02;
   }
-
+  
   100% {
     scale: 1;
   }
@@ -369,11 +368,11 @@ margin: 0px auto auto auto;
   0% {
     scale: 0;
   }
-
+  
   50% {
     scale: 1.5;
   }
-
+  
   100% {
     scale: 1;
   }
@@ -385,7 +384,7 @@ margin: 0px auto auto auto;
     width: 5vw;
     /* Initial width is 0 */
   }
-
+  
   100% {
     width: 90vw;
     /* Expand to full width of content */
@@ -559,11 +558,11 @@ margin: 0px auto auto auto;
   #startPage .feature-list {
     grid-template-columns: 1fr 1fr;
   }
-
+  
   #startPage .feature {
     width: 40vh;
   }
-
+  
   .tableRow {
     padding-top: 3vh;
     margin: 3vh auto;
