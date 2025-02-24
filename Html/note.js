@@ -1,4 +1,5 @@
 const notesContainer = document.getElementById("notesContainer");
+
 const notepad = document.getElementById("notepad");
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 let currentNoteIndex = null; // Store the index of the note currently being edited
