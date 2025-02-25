@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="Html/timetable.css">
   <link rel="stylesheet" href="Html/style.css" type="text/css" />
   <link rel="stylesheet" href="Html/UI.css" type="text/css" />
-  
+   
   <style type="text/css" media="all">
     .app-container,
     #CGPA_Div,
@@ -19,7 +19,7 @@
   <script src="ds:/Sys/app.js"></script>
   
   <script>
-     cfg.Portrait;
+   //  cfg.Portrait;
     
     function OnStart() {
       app.Animate(ShowRotation, 2);
@@ -466,7 +466,7 @@
   <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
-    app.EnableBackKey(false);
+    //app.EnableBackKey(false);
     
     let OnBack = () => {
       app.Exit();
@@ -1035,7 +1035,7 @@ ${GradeOption}
             // Check if the click was outside
             if (!isClickInsideOption) {
               options.style.display = "none"; // Hide the options
-            }
+            } 
           });
         //for the choose option
         selected.addEventListener('click',
@@ -1541,7 +1541,7 @@ ${GradeOption}
       
       function handleReply(error, reply) {
         if (error) {
-          app.ShowPopup('Failed to connect to server');
+          app.ShowPopup('minor error');
         } else {
           console.log('Fetching in progress...');
           // Extract data between the specified markers
@@ -1583,8 +1583,8 @@ ${GradeOption}
             myAlertWork(MyMessage)
           }
           
-          console.log('Successfully to connect to server');
-          app.ShowPopup('Successfully to connect to server');
+          console.log('Successfully to connected');
+          app.ShowPopup('Successfully to connected');
           
         }
       }
