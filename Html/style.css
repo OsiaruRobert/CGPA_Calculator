@@ -159,7 +159,7 @@ input {
 
 .SemeTitle {
   display: grid;
-  grid-template-columns: 5fr 3fr;
+  grid-template-columns: 50fr 1fr;
 }
 
 .Semester_Title {
@@ -201,6 +201,7 @@ input {
 }
 
 .noResult {
+  display: none;
   color: #FF1600;
   font-size: 1.4vh;
 }
@@ -443,7 +444,7 @@ input {
   border-radius: 7vw;
   transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  font-size: 5vw;
+  font-size: 7vw;
   font-weight: 700;
 }
 

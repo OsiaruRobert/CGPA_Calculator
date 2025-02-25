@@ -33,4 +33,16 @@ document.getElementById("exitTips").addEventListener('click', () => {
   })
 });
 
+function closeChoose() {
+  Id('beforeChoose').style.display = "none";
+}
+function openChoose() {
+  Id('beforeChoose').style.display = "block";
+}
+Id('calculate').addEventListener('click', () => { openChoose(); });
 
+
+
+Id('closeChoose').addEventListener('click', () => { closeChoose(); });
+Id('CGPA_Button').addEventListener('click', () => { closeChoose(); });
+Id('GPA_Button').addEventListener('click', () => { closeChoose(); })

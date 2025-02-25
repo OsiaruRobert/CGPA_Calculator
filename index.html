@@ -42,15 +42,29 @@
       <p>
         Your academic journey made easy!
       </p>
-      <a class="btn">Get Started</a>
+      <a id="calculate" class="btn">Calculate</a>
     </header>
+    <div id="beforeChoose">
+          <div id="Choose">
+      <img id="closeChoose" src="Img/X.png" alt="X" />
+<div id="CGPA_GPA_B">
+        <div id="CGPA_Button">
+        CGPA
+      </div>
+      <div id="GPA_Button">
+        GPA
+      </div>
+</div>
+    </div>
+
+    </div>
     
     <section id="features">
       <h2>Features</h2>
       <div class="feature-list">
         
         
-        <div id="CGPA_Button" class="feature">
+        <div class="feature">
           <h3> CGPA Calculation</h3>
           <p>
             calculate you CGPA within seconds.
@@ -58,7 +72,7 @@
         </div>
         
         
-        <div id="GPA_Button" class="feature">
+        <div class="feature">
           <h3> GPA Calculation</h3>
           <p>
             calculate you GPA within seconds.
@@ -1382,14 +1396,7 @@ ${GradeOption}
         });
       }, 200);
     };
-    
-    // Smooth Scroll for Button
-    document.querySelector('.btn').addEventListener('click', () => {
-      window.scrollTo({
-        top: 260,
-        behavior: 'smooth' // Smooth scrolling
-      });
-    });
+   
     
     const CGPA_Button = Id("CGPA_Button");
     const GPA_Button = Id("GPA_Button");
