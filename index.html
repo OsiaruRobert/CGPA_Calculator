@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="Html/timetable.css">
   <link rel="stylesheet" href="Html/style.css" type="text/css" />
   <link rel="stylesheet" href="Html/UI.css" type="text/css" />
-   
+  
   <style type="text/css" media="all">
     .app-container,
     #CGPA_Div,
@@ -19,7 +19,7 @@
   <script src="ds:/Sys/app.js"></script>
   
   <script>
-   //  cfg.Portrait;
+    //  cfg.Portrait;
     
     function OnStart() {
       app.Animate(ShowRotation, 2);
@@ -45,18 +45,18 @@
       <a id="calculate" class="btn">Calculate</a>
     </header>
     <div id="beforeChoose">
-          <div id="Choose">
-      <img id="closeChoose" src="Img/X.png" alt="X" />
-<div id="CGPA_GPA_B">
-        <div id="CGPA_Button">
-        CGPA
+      <div id="Choose">
+        <img id="closeChoose" src="Img/X.png" alt="X" />
+        <div id="CGPA_GPA_B">
+          <div id="CGPA_Button">
+            CGPA
+          </div>
+          <div id="GPA_Button">
+            GPA
+          </div>
+        </div>
       </div>
-      <div id="GPA_Button">
-        GPA
-      </div>
-</div>
-    </div>
-
+      
     </div>
     
     <section id="features">
@@ -109,7 +109,7 @@
     <!---Header--->
     <header class="app-header">
       
-      <h1 class="page_title">CGPA Calculator</h1>
+      <h1 id="page_title" class="page_title">CGPA Calculator</h1>
       
       <!---Theme controler--->
       <label class="NightDayswitch">
@@ -951,7 +951,6 @@ ${GradeOption}
         } else {
           displayTable();
           MyApp_Location = 'GPA_Cal';
-          
         }
       };
     });
@@ -1049,7 +1048,7 @@ ${GradeOption}
             // Check if the click was outside
             if (!isClickInsideOption) {
               options.style.display = "none"; // Hide the options
-            } 
+            }
           });
         //for the choose option
         selected.addEventListener('click',
@@ -1199,8 +1198,8 @@ ${GradeOption}
           Id("CGPA_Container").appendChild(newYear);
           
           Id(`Y${y}`).innerHTML = `        <h1 class="Year_Title">Year ${y}</h1>`;
-
- 
+          
+          
           //For semester
           for (let s = 1; s < semester; s++) {
             //Create semester Container
@@ -1232,7 +1231,7 @@ ${GradeOption}
                 </section>            <button class="Add_Row">+</button>
                 <button class="Done">✓</button>
                 `;
-
+            
             //Create Results Table
             for (let row = 1; row < NOC; row++) {
               Id(`Y${y}S${s}Results_Table`).innerHTML += `<div class="tableRow">${universalRowContent}</div>`;
@@ -1396,7 +1395,7 @@ ${GradeOption}
         });
       }, 200);
     };
-   
+    
     
     const CGPA_Button = Id("CGPA_Button");
     const GPA_Button = Id("GPA_Button");
@@ -1504,21 +1503,21 @@ ${GradeOption}
     //Ads in buult
     let In_Built_Ads = `
   Ads_MediaType_S img Ads_MediaType_E
-  Ads_Img_S Img/adsTest.jpg Ads_Img_E
+  Ads_Img_S Img/osiaruData.png Ads_Img_E
   Ads_ShowTime_S 5000 Ads_ShowTime_E
-  Ads_Url_S https://1.wordpress.com Ads_Url_E
-  Ads_Alt_S Online With Beta gives you monthly data at very affordable prices Ads_Alt_E
-  Ads_Category_S Education Ads_Category_E
-  Ads_SubCategory_S Toturial Ads_SubCategory_E
-  Ads_Owner_S Owner1 Ads_Owner_E
+  Ads_Url_S https://www.osiaruData.com Ads_Url_E
+  Ads_Alt_S www.osiaruData.com gives you monthly data at very affordable prices Ads_Alt_E
+  Ads_Category_S General Ads_Category_E
+  Ads_SubCategory_S General Ads_SubCategory_E
+  Ads_Owner_S Believe Robert Ads_Owner_E
  
   Ads_MediaType_S img Ads_MediaType_E
   Ads_Img_S Img/adTest.jpg Ads_Img_E
   Ads_ShowTime_S 5000 Ads_ShowTime_E
-  Ads_Url_S https://1.wordpress.com Ads_Url_E
-  Ads_Alt_S Online With Beta Ads_Alt_E
-  Ads_Category_S Love Ads_Category_E
-  Ads_SubCategory_S Toturial Ads_SubCategory_E
+  Ads_Url_S https://www.osiaru.kesug.com/myAds/myAds.html Ads_Url_E
+  Ads_Alt_S talk talk talk Ads_Alt_E
+  Ads_Category_S General Ads_Category_E
+  Ads_SubCategory_S General Ads_SubCategory_E
   Ads_Owner_S Owner1 Ads_Owner_E
   `;
     

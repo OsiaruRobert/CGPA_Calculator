@@ -44,5 +44,12 @@ Id('calculate').addEventListener('click', () => { openChoose(); });
 
 
 Id('closeChoose').addEventListener('click', () => { closeChoose(); });
-Id('CGPA_Button').addEventListener('click', () => { closeChoose(); });
-Id('GPA_Button').addEventListener('click', () => { closeChoose(); })
+
+Id('CGPA_Button').addEventListener('click', () => { 
+  closeChoose();
+ Id('page_title').innerText='CGPA Calculator';
+  });
+Id('GPA_Button').addEventListener('click', () => {
+  closeChoose();
+ Id('page_title').innerText='GPA Calculator';
+})
