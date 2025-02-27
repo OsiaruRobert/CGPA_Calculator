@@ -747,7 +747,7 @@
 <div class="option" data-value="1">E</div>
 </div>`;
     
-    
+    share
     //What every row will contain
     let universalRowContent = `
 <span class="SN">.</span>
@@ -1488,13 +1488,14 @@ ${GradeOption}
     
     
     
-    
+    let link = JSON.parse(localStorage.getItem("link"));
+
     
     //shareButton
     Id("shareButton").addEventListener('click', () => {
-      app.SendText("I absolutely love using this app for calculating my CGPA and GPA! It’s incredibly fast, intuitive, and makes the entire process effortless. If you want an easy way to keep track of your academic performance, I highly recommend you give it a try: https://www.amazon.com/gp/mas/dl/android?p=com.osiaru.cgpa", "Share app", "Choose an app");
+      app.SendText(`I absolutely love using this app for calculating my CGPA and GPA! It’s incredibly fast, intuitive, and makes the entire process effortless. If you want an easy way to keep track of your academic performance, I highly recommend you give it a try: 
+      ${link}`, "Share app", "Choose an app");
     });
-    let link;
     Id("x").addEventListener("click", () => {
       Id("Update_container").style = 'display:none';
     });
