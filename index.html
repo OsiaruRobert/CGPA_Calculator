@@ -1575,6 +1575,9 @@ ${GradeOption}
           localStorage.setItem("latestVersion", JSON.stringify(latestVersion));
           
           link = raw_Ads.slice(raw_Ads.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
+          localStorage.setItem("link", JSON.stringify(link));
+            
+            
           let meLink = raw_Ads.slice(raw_Ads.indexOf("Start_Of_melink") + 15, raw_Ads.indexOf("End_Of_melink"));
           
           localStorage.setItem("mylink", JSON.stringify(meLink));
@@ -1584,7 +1587,8 @@ ${GradeOption}
           if (1 < latestVersion) {
             Id("Update_container").style.display = "block";
             localStorage.setItem("link", JSON.stringify(link));
-            link = JSON.parse(localStorage.getItem("link"));
+            
+            link = JSON.pars, e(localStorage.getItem("link"));
             
             Id("Update_link").addEventListener('click', () => {
               app.OpenUrl(link);
@@ -1594,7 +1598,7 @@ ${GradeOption}
           //Version control
           let If_Message = raw_Ads.slice(raw_Ads.indexOf("Start_Of_If_Message") + 19, raw_Ads.indexOf("End_Of_If_Message"));
           
-          let MyMessage = raw_Ads.slice(raw_Ads.indexOf("Start_Of_Message") + 16, raw_Ads.indexOf("End_Of_Message"));
+          let MyMessage = raw_Ads.slice(raw_Ads.indexOf("Start_Of_MessageN") + 17, raw_Ads.indexOf("End_Of_MessageN"));
           
           
           //Check for message.
@@ -1891,6 +1895,7 @@ ${GradeOption}
     //My telegram Group 
     if (localStorage.getItem('telegramEntered') === 'true') {
       document.getElementById('telegram_Con').style.display = 'none';
+       console.log(true);
     } else {
       console.log(false);
     }
@@ -1906,9 +1911,10 @@ ${GradeOption}
     })
   </script>
   
-  <script src="Html/timetable.js"></script>
+  
   <script src="Html/note.js"></script>
   <script src="Html/telegram.js"></script>
 </body>
 
 </html>
+
