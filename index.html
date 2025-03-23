@@ -19,7 +19,7 @@
   <script src="ds:/Sys/app.js"></script>
   
   <script>
-    cfg.Portrait;
+    // cfg.Portrait;
     
     function OnStart() {
       app.Animate(ShowRotation, 2);
@@ -38,7 +38,7 @@
   
   <div id="startPage">
     <header>
-      <h1>David <br />Calculator</h1>
+      <h1>CGPA <br />Calculator</h1>
       <p>
         Your academic journey made easy!
       </p>
@@ -462,6 +462,16 @@
       <button id="alertOk" type="button">OK, Thanks</button>
     </div>
   </div>
+  <!--Update app.-->
+  <div id="telegram_Con">
+    <div id="telegramBox">
+      <p id="telegramMessage">
+        Please join our telegram channel yo get the lastest information consigning our apps
+      </p>
+      <button id="telegramOk" type="button">OK, Thanks</button>
+    </div>
+  </div>
+  
   <div id="Update_container">
     <div class="Update" id="Update">
       <span id="x">x</span>
@@ -480,7 +490,7 @@
   <script src="Html/script.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     //Leaving app..
-    app.EnableBackKey(false);
+    // app.EnableBackKey(false);
     
     let OnBack = () => {
       app.Exit();
@@ -747,7 +757,7 @@
 <div class="option" data-value="1">E</div>
 </div>`;
     
-    share
+    
     //What every row will contain
     let universalRowContent = `
 <span class="SN">.</span>
@@ -1489,7 +1499,7 @@ ${GradeOption}
     
     
     let link = JSON.parse(localStorage.getItem("link"));
-
+    
     
     //shareButton
     Id("shareButton").addEventListener('click', () => {
@@ -1562,6 +1572,8 @@ ${GradeOption}
           //Version control
           let latestVersion = raw_Ads.slice(raw_Ads.indexOf("Start_Of_latestVersion") + 22, raw_Ads.indexOf("End_Of_latestVersion"));
           
+          localStorage.setItem("latestVersion", JSON.stringify(latestVersion));
+          
           link = raw_Ads.slice(raw_Ads.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
           let meLink = raw_Ads.slice(raw_Ads.indexOf("Start_Of_melink") + 15, raw_Ads.indexOf("End_Of_melink"));
           
@@ -1576,7 +1588,7 @@ ${GradeOption}
             
             Id("Update_link").addEventListener('click', () => {
               app.OpenUrl(link);
-            });;
+            });
           }
           
           //Version control
@@ -1861,11 +1873,42 @@ ${GradeOption}
           app.OpenUrl('https://wa.me/9064498317?text=Hi%20there%20I%20would%20like%20to%20advertise%20my%20business/product...');
         }
       })
+    });
+    
+    
+    latestVersion = JSON.parse(localStorage.getItem("latestVersion"));
+    
+    //Validate
+    if (1 < latestVersion) {
+      Id("Update_container").style.display = "block";
+      link = JSON.parse(localStorage.getItem("link"));
+      
+      Id("Update_link").addEventListener('click', () => {
+        app.OpenUrl(link);
+      });
+    }
+    
+    //My telegram Group 
+    if (localStorage.getItem('telegramEntered') === 'true') {
+      document.getElementById('telegram_Con').style.display = 'none';
+    } else {
+      console.log(false);
+    }
+    
+    document.getElementById('telegramOk').addEventListener('click', () => {
+      
+      let telegram_Group = 'https://t.me/osiaruApps';
+      localStorage.setItem("telegramEntered", JSON.stringify(true));
+      
+      document.getElementById('telegram_Con').style.display = 'none';
+      
+      app.OpenUrl(telegram_Group);
     })
   </script>
   
   <script src="Html/timetable.js"></script>
   <script src="Html/note.js"></script>
+  <script src="Html/telegram.js"></script>
 </body>
 
 </html>

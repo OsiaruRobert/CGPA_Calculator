@@ -450,8 +450,9 @@ details li {
 .custom-dropdown .option:hover {
   background-color: #f1f1f1;
 }
+  
 
-#myAlertBox {
+#myAlertBox, #telegramBox {
   width: 90vw;
   padding: 5vw;
   position: fixed;
@@ -465,14 +466,13 @@ details li {
   box-shadow: 8px 7px 5px #000;
   animation: appear 0.3s;
   font-size: 1.3rem;
-  display: none;
 }
 
-#myAlertMessage {
+#myAlertMessage #telegramMessage{
   overflow-wrap: break-word;
 }
 
-#myAlertBox #alertOk {
+#myAlertBox #alertOk, #telegramOk {
   height: 20vw;
   width: 20vw;
   margin: 4vh 4vw auto 50vw;
@@ -485,7 +485,7 @@ details li {
   animation: appear 0.39s;
 }
 
-#myAlertBox_Con {
+#myAlertBox_Con ,#telegram_Con{
   display: none;
   height: 100vh;
   width: 100vw;
@@ -500,7 +500,9 @@ details li {
   transition: none;
   animation: none;
 }
-
+#telegram_Con{
+    display: block;
+}
 .dark #myAlertBox_Con {
   background-color: #000b;
 }
