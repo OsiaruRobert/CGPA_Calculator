@@ -139,7 +139,7 @@
   right: 3vh;
   height: 5vh;
   width: 5vh;
-  display: none;
+  display: block;
 }
 .toAd{
   font-size: 4vw;

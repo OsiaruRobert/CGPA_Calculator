@@ -22,14 +22,14 @@
     // cfg.Portrait;
     
     function OnStart() {
-      app.Animate(ShowRotation, 2);
-      setTimeout('app.SetOrientation("landscape")', 5000);
+    //  app.Animate(ShowRotation, 2);
+     // setTimeout('app.SetOrientation("landscape")', 5000);
     }
     
     function ShowRotation()
     {
-      var mode = app.GetRotation();
-      app.ShowPopup(mode);
+     // var mode = app.GetRotation();
+      //app.ShowPopup(mode);
     }
   </script>
 </head>
@@ -493,7 +493,7 @@
     // app.EnableBackKey(false);
     
     let OnBack = () => {
-      app.Exit();
+     // app.Exit();
     }
     
     //class that creates a Course object that will have properties like Course title, Credit Unit , Grade and point.
@@ -617,7 +617,7 @@
       myscrollUp();
       //Can Exit app..
       OnBack = () => {
-        app.Exit();
+      //  app.Exit();
       };
       MyApp_Location = 'Home';
       
@@ -1554,7 +1554,7 @@ ${GradeOption}
     
     //requestAds
     function requestAds(address) {
-      app.HttpRequest("GET", address, null, null, handleReply);
+     // app.HttpRequest("GET", address, null, null, handleReply);
       
       function handleReply(error, reply) {
         if (error) {
