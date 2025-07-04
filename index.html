@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="Html/style.css" type="text/css" />
   <link rel="stylesheet" href="Html/UI.css" type="text/css" />
   
+  <link rel="shortcut icon" href="/Img/CGPAPlanner.png" type="image/x-icon" />
+  
+  
   <style type="text/css" media="all">
     .app-container,
     #CGPA_Div,
@@ -1537,7 +1540,7 @@ ${GradeOption}
     
     if (navigator.onLine) {
       try {
-        requestAds("https://github.com/OsiaruRobert/Fetch/blob/main/Online.json");
+       // requestAds("");
       } catch (e) {
         
         console.log(e);
@@ -1545,7 +1548,7 @@ ${GradeOption}
     } else {
       window.addEventListener('online', () => {
         try {
-          requestAds("https://github.com/OsiaruRobert/Fetch/blob/main/Online.json");
+          //requestAds();
         } catch (e) {
           console.log(e);
         }
